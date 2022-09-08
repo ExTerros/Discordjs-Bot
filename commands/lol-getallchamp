@@ -1,0 +1,37 @@
+const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
+const { default: axios } = require("axios");
+const fs = require('node:fs');
+const { developerriotgameskey } = require('../config.json');
+
+module.exports = {
+	data: new SlashCommandBuilder()
+	.setName('rotachamp')
+	.setDescription('Champion en rotation Lol'),
+    async execute(interaction){
+        //get last version of league of legends
+        const lolVersion = await axios.get('https://ddragon.leagueoflegends.com/api/versions.json');
+        const lolLastVersion = lolVersion.data[0];
+        //get list of league of legends champion 
+        const ddragonJson = await axios.get(`http://ddragon.leagueoflegends.com/cdn/${lolLastVersion}/data/fr_FR/champion.json`);
+        const listJson = ddragonJson.data['data']['Aatrox'];
+        // get champion rotation
+        const rotationChampionList = await axios.get(`https://euw1.api.riotgames.com/lol/platform/v3/champion-rotations?api_key=${developerriotgameskey}`)
+        const rotationChampion = rotationChampionList.data['freeChampionIds']
+        const lvlForRotationNewPlayer = rotationChampionList.data['maxNewPlayerLevel']
+        const rotationChampionNewPlayer = rotationChampionList.data['freeChampionIdsForNewPlayers']
+       
+        
+
+        
+        for (let i = 0; i < rotationChampion.length; i++) {
+            const rotationChampionId = rotationChampion[i];
+            
+        }
+        console.log(listJson);
+        // for (let i = 0; i < listJson.length; i++) {
+        //     const test = listJson[i];
+        //     console.log(test);
+        // }
+        
+    }
+}

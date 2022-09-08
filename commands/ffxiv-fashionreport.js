@@ -56,6 +56,7 @@ module.exports = {
                     frEmbed.setTitle(current['title']);
                     frEmbed.setURL(PermaLink)
                     frEmbed.setImage(imageLink);
+                    frEmbed.setTimestamp()
                     return interaction.reply({ embeds: [frEmbed] });
                 }
             }
