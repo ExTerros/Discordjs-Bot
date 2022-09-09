@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder, AttachmentBuilder } = require('discord.js');
 const { default: axios } = require("axios");
 const puppeteer = require('puppeteer');
 
@@ -15,23 +15,34 @@ module.exports = {
     async execute(interaction){
         //get user input
         const champion = interaction.options.getString('nom');
-        await interaction.reply('Je recherche le champion');
         const strChampion = champion.charAt(0).toUpperCase() + champion.slice(1);
         //get last version of league of legends
         const lolVersion = await axios.get('https://ddragon.leagueoflegends.com/api/versions.json');
         const lolLastVersion = lolVersion.data[0];
         //get list of league of legends champion 
         const ddragonJson = await axios.get(`http://ddragon.leagueoflegends.com/cdn/${lolLastVersion}/data/fr_FR/champion.json`);
+        await interaction.reply('Je recherche le champion');
+
         (async () => {
             const browser = await puppeteer.launch({headless: true}); 
             const page = await browser.newPage();
             await page.goto(`https://u.gg/lol/champions/${strChampion}/build`);
-    
-    
-            
             await page.click('button[mode=primary]');
-            
-    
+            await page.evaluate(async() => {
+              await new Promise(function(resolve) { 
+                     setTimeout(resolve, 1000)
+              });
+          });
+          await page.setViewport({
+              width: 1920,
+              height: 1080,
+            });
+            await page.evaluate(async() => {
+              await new Promise(function(resolve) { 
+                     setTimeout(resolve, 3000)
+              });
+          });
+          await page.click('#close-div-gpt-ad-sticky-bottom');
     
             const tier = await page.evaluate(() => {
                 const tier = document.querySelector(".champion-tier .tier");
@@ -69,17 +80,15 @@ module.exports = {
             
                 return MatchesText;
               });
-            
-              console.log(tier,' Tier');
-              console.log(Win,' Win Rate');
-              console.log(Rank,' Rank');
-              console.log(Pick,' Pick Rate');
-              console.log(Ban,' Ban Rate');
-              console.log(Matches,' Matches');
+              
+            const select = await page.waitForSelector("div.champion-recommended-build div.media-query_DESKTOP_MEDIUM__DESKTOP_LARGE")
+            await select.screenshot({path: "./assets/build.png"})
+        
+          // await browser.close();  
 
         if (ddragonJson.data['data'][strChampion]) {
+        const file = new AttachmentBuilder("./assets/build.png");
         const listJson = ddragonJson.data['data'][strChampion]; 
-        console.log(listJson);
         const ChampEmbed = new EmbedBuilder()
         .setColor('#FFC107')
         .setAuthor({ name: listJson['name'], iconURL: `https://www.mobafire.com/images/champion/square/${listJson['name']}.png` })
@@ -94,7 +103,7 @@ module.exports = {
             { name: 'Ban Rate', value: `${Ban}`, inline: true },
             { name: 'Matches', value: `${Matches}`, inline: true },
         )
-        .setImage(`https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${listJson['name']}_0.jpg`)
+        .setImage('attachment://build.png');
         let tags = []
         for (let i = 0; i < listJson['tags'].length; i++) {
             
@@ -104,7 +113,7 @@ module.exports = {
         const ChampEmbedTag = EmbedBuilder.from(ChampEmbed)
             .addFields(
                 { name: 'Type', value: `${tags}`, inline: true })
-            interaction.editReply({ embeds: [ChampEmbedTag] });
+            interaction.editReply({ embeds: [ChampEmbedTag], files: [file] });
         }else{
             interaction.editReply("Aucun champion ne porte ce nom")
         }
