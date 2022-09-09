@@ -3,7 +3,7 @@ module.exports = {
 	once: true,
 	execute(client) {
 		console.log(`Connecté comme ${ client.user.tag }!`);
-		client.user.setStatus('dnd');
-		client.user.setActivity('écrire des ligne de code');
+		client.user.setStatus('online');
+		client.user.setActivity('Farming Simulator 2045');
 	},
 };

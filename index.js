@@ -1,4 +1,5 @@
 // Require the necessary discord.js classes
+const moment = require('moment');
 const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, GatewayIntentBits, EmbedBuilder } = require('discord.js');
@@ -593,7 +594,8 @@ setInterval(function(){
 	UpdateZevent()
 	UpdateCanvaZevent()
 
-	console.log('set timer');
+	var newDateObj = moment().format('LT').add(20, 'm').toDate();
+	console.log(newDateObj);
 
 	setTimeout(function(){EnvoieNotifNewsTopic();}, 30000)
 	setTimeout(function(){EnvoieNotifNewsNotice();}, 30000)
