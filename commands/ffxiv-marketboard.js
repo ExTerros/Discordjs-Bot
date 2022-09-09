@@ -4,7 +4,7 @@ const dcs = ["Aether", "Chaos", "Crystal", "Elemental", "Gaia", "Korea", "Light"
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('marketboard')
+		.setName('ffxivmarketboard')
 		.setDescription("Prix Marketboard")
 		.addStringOption(option =>
 			option
@@ -12,6 +12,7 @@ module.exports = {
 				.setDescription('Le nom de votre Item')
 				.setRequired(true)),
 	async execute(interaction) {
+        await interaction.reply('Je recherche votre item');
 		//const value
 		const term = interaction.options.getString('item');
 		const monde = '39';
@@ -25,14 +26,14 @@ module.exports = {
         })
         .then((response) => {
             //console.log(response.data);
-            if (response.data['Pagination']['ResultsTotal'] === 0) return interaction.reply({ content: "Pas d'items trouvé", ephemeral: true });
+            if (response.data['Pagination']['ResultsTotal'] === 0) return interaction.editReply({ content: "Pas d'items trouvé", ephemeral: true });
 
             // console.log("name: " + response.data['Results'][0]["Name"]); // got info!!
             // console.log("id: " + response.data['Results'][0]["ID"]);
 
             axios.get(`https://universalis.app/api/${args[0]}/${response.data['Results'][0]["ID"]}?listings=10`)
             .then((uvResponse) => {
-                if (Object.keys(uvResponse.data['listings']).length === 0) return interaction.reply({ content: "Aucune liste de vente trouvé", ephemeral: true });
+                if (Object.keys(uvResponse.data['listings']).length === 0) return interaction.editReply({ content: "Aucune liste de vente trouvé", ephemeral: true });
                 const priceDataEmbed = new EmbedBuilder()
 				.setTitle(`${args[0]} ${response.data['Results'][0]["Name"]} en vente`)
 				.setFooter({
@@ -65,7 +66,7 @@ module.exports = {
 				{ name: 'Price/Quantity', value: priceString, inline: true },
 				{ name: 'Quality', value: hqString , inline: true},
 				{ name: 'Server', value: worldString, inline: true },)
-				interaction.reply({ embeds: [newEmbed] });
+				interaction.editReply({ embeds: [newEmbed] });
 		})
             .catch((error) => {
                 console.log(error);
@@ -73,7 +74,7 @@ module.exports = {
         })
         .catch((error) => {
             console.log(error);
-            return interaction.reply("There was a problem reaching XIVAPI. Please try again later.");
+            return interaction.editReply("There was a problem reaching XIVAPI. Please try again later.");
         });
 	},
 };

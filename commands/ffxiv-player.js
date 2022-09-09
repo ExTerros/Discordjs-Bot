@@ -4,7 +4,7 @@ const { xivapikey } = require('../config.json');
 
 module.exports = {
 	data: new SlashCommandBuilder()
-	.setName('player')
+	.setName('ffxivplayer')
 	.setDescription('Répond avec le profil ff14!')
 	.addStringOption(option =>
 		option
@@ -20,8 +20,10 @@ module.exports = {
 		//Get option user
 		var prenom = interaction.options.getString('prenom');
 		var nom = interaction.options.getString('nom');
+        await interaction.reply('Je recherche le personnage');
 		const strPrenom = prenom.charAt(0).toUpperCase() + prenom.slice(1);
 		const strNom = nom.charAt(0).toUpperCase() + nom.slice(1);
+
 
 		axios.get(`https://xivapi.com/character/search?name=${strPrenom}+${strNom}&server=Omega&private_key=${xivapikey}`).then((response) => {
 			if (response.data['Pagination']['Results'] === 0) return interaction.reply(`Pas de joueur sous le nom de \`${strPrenom} ${strNom}\` trouvé sur \`Omega.\``);
@@ -45,10 +47,10 @@ module.exports = {
 					{ name: 'Mascotes', value: `${Object.keys(char.data['Minions']).length}`, inline: true },
 					{ name: 'Montures', value: `${Object.keys(char.data['Mounts']).length}`, inline: true},
 					)
-					interaction.reply({ embeds: [newEmbed] });
+					interaction.editReply({ embeds: [newEmbed] });
 												
 				}else{
-					interaction.reply({ embeds: [PlayerEmbed] });
+					interaction.editReply({ embeds: [PlayerEmbed] });
 				}
 				
 			})

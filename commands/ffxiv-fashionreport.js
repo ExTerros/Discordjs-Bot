@@ -9,9 +9,11 @@ var linkreddit = "https://www.reddit.com/r/ffxiv/comments/wy8i8d/fashion_report_
 
 module.exports = {
 	data: new SlashCommandBuilder()
-	.setName('fashion')
+	.setName('ffxivfashion')
 	.setDescription('Affiche le Fashion Report de la semaine'),
     async execute(interaction){
+        await interaction.reply("J'appelle Miss Kaiyoko Star");
+
         const frEmbed = new EmbedBuilder()
             .setColor('#FFC107')
             .setTitle(title)
@@ -22,7 +24,7 @@ module.exports = {
         const today = new Date();
         if ((today - lastPosted * 1000) / 1000 / 60 / 60 / 24 < 6){ // if the post was from within 6 days ago, then don't bother updating 
             console.log("used old fr value");
-            await interaction.reply({ embeds: [frEmbed] });
+            await interaction.editReply({ embeds: [frEmbed] });
         }
         console.log("Upadating Fashion")
         //get api status
@@ -37,7 +39,7 @@ module.exports = {
                 if (current['title'].indexOf("Fashion Report - Full Details - For Week") !== -1){
                     if (current['created_utc'] === lastPosted){
                         console.log("couldn't find newer post to update to");
-                        return interaction.reply({ embeds: [frEmbed] });
+                        return interaction.editReply({ embeds: [frEmbed] });
                     }
 
                     const currentImage = current['preview']['images'][0]['source']['url'];
@@ -57,7 +59,7 @@ module.exports = {
                     frEmbed.setURL(PermaLink)
                     frEmbed.setImage(imageLink);
                     frEmbed.setTimestamp()
-                    return interaction.reply({ embeds: [frEmbed] });
+                    return interaction.editReply({ embeds: [frEmbed] });
                 }
             }
         }else if(apiStatus == 404){

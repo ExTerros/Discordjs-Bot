@@ -15,6 +15,7 @@ module.exports = {
     async execute(interaction){
         //get user input
         const champion = interaction.options.getString('nom');
+        await interaction.reply('Je recherche le champion');
         const strChampion = champion.charAt(0).toUpperCase() + champion.slice(1);
         //get last version of league of legends
         const lolVersion = await axios.get('https://ddragon.leagueoflegends.com/api/versions.json');
@@ -24,7 +25,7 @@ module.exports = {
         (async () => {
             const browser = await puppeteer.launch({headless: true}); 
             const page = await browser.newPage();
-            await page.goto(`https://u.gg/lol/champions/${strChampion}/build?region=euw1`);
+            await page.goto(`https://u.gg/lol/champions/${strChampion}/build`);
     
     
             
@@ -86,28 +87,6 @@ module.exports = {
         .setURL(`https://u.gg/lol/champions/${listJson['name']}/build`)
         .setDescription(listJson['blurb'])
         .addFields(
-            { name: 'HP', value: `${listJson['stats']['hp']}`, inline: true },
-            { name: 'HP par level', value: `${listJson['stats']['hpperlevel']}`, inline: true },
-            { name: '‎', value: '‎ ', inline: true },
-            { name: 'Mana', value: `${listJson['stats']['mp']}`, inline: true },
-            { name: 'Mana par level', value: `${listJson['stats']['mpperlevel']}`, inline: true },
-            { name: '‎', value: '‎ ', inline: true },
-            { name: 'Régenération hp', value: `${listJson['stats']['hpregen']}`, inline: true },
-            { name: 'Régenération hp par level', value: `${listJson['stats']['hpregenperlevel']}`, inline: true },
-            { name: '‎', value: '‎ ', inline: true },
-            { name: 'Régenération Mana', value: `${listJson['stats']['mpregen']}`, inline: true },
-            { name: 'Régenération Mana par level', value: `${listJson['stats']['mpregenperlevel']}`, inline: true },
-            { name: '‎', value: '‎ ', inline: true },
-            { name: 'Attack damage', value: `${listJson['stats']['attackdamage']}`, inline: true },
-            { name: 'Régenération Attack damage par level', value: `${listJson['stats']['attackdamageperlevel']}`, inline: true },
-            { name: '‎', value: '‎ ', inline: true },
-            { name: 'Attack speed', value: `${listJson['stats']['attackspeed']}`, inline: true },
-            { name: 'Attack speed par level', value: `${listJson['stats']['attackspeedperlevel']}`, inline: true },
-            { name: '‎', value: '‎ ', inline: true },
-            { name: 'Crit', value: `${listJson['stats']['crit']}`, inline: true },
-            { name: 'Crit par level', value: `${listJson['stats']['critperlevel']}`, inline: true },
-            { name: '‎', value: '‎ ', inline: true },
-            { name: '‎', value: '‎ ', inline: true },
             { name: 'Tier', value: `${tier}`, inline: true },
             { name: 'Win Rate', value: `${Win}`, inline: true },
             { name: 'Rank', value: `${Rank}`, inline: true },
@@ -125,9 +104,9 @@ module.exports = {
         const ChampEmbedTag = EmbedBuilder.from(ChampEmbed)
             .addFields(
                 { name: 'Type', value: `${tags}`, inline: true })
-            interaction.reply({ embeds: [ChampEmbedTag] });
+            interaction.editReply({ embeds: [ChampEmbedTag] });
         }else{
-            interaction.reply("Aucun champion ne porte ce nom")
+            interaction.editReply("Aucun champion ne porte ce nom")
         }
 
         
