@@ -49,7 +49,7 @@ client.on('interactionCreate', async interaction => {
 	}
 });
 
-	/****************************************************
+		/****************************************************
     ************ NEWS CHANNEL TOPIC UPDATE **************
     ****************************************************/	
 
@@ -109,7 +109,7 @@ client.on('interactionCreate', async interaction => {
 						.setURL(listUpdate["src"][0])
 						.setDescription(listUpdate["text"][0])
 						.setImage(listUpdate["file"][0])
-						.setFooter({ text: listUpdate["date"][0], iconURL: 'https://uxwing.com/wp-content/themes/uxwing/download/time-and-date/calendar-color-icon.png' });
+						.setTimestamp()
 	
 					client.channels.cache.get(channelNews).send({ embeds: [frEmbed] })
 		
@@ -126,7 +126,7 @@ client.on('interactionCreate', async interaction => {
 						.setURL(listUpdate["src"][0])
 						.setDescription(listUpdate["text"][0])
 						.setImage(listUpdate["file"][0])
-						.setFooter({ text: listUpdate["date"][0], iconURL: 'https://uxwing.com/wp-content/themes/uxwing/download/time-and-date/calendar-color-icon.png' });
+						.setTimestamp()
 	
 					client.channels.cache.get(channelNews).send({ embeds: [frEmbed] })
 	
@@ -197,7 +197,7 @@ client.on('interactionCreate', async interaction => {
 						.setAuthor({ name: 'Informations', iconURL: 'https://img.finalfantasyxiv.com/lds/h/0/U2uGfVX4GdZgU1jASO0m9h_xLg.png' })
 						.setTitle(listUpdate["title"][0])
 						.setURL(listUpdate["src"][0])
-						.setFooter({ text: listUpdate["date"][0], iconURL: 'https://uxwing.com/wp-content/themes/uxwing/download/time-and-date/calendar-color-icon.png' });
+						.setTimestamp()
 	
 					client.channels.cache.get(channelNews).send({ embeds: [frEmbed] })
 		
@@ -212,7 +212,7 @@ client.on('interactionCreate', async interaction => {
 						.setAuthor({ name: 'Informations', iconURL: 'https://img.finalfantasyxiv.com/lds/h/0/U2uGfVX4GdZgU1jASO0m9h_xLg.png' })
 						.setTitle(listUpdate["title"][0])
 						.setURL(listUpdate["src"][0])
-						.setFooter({ text: listUpdate["date"][0], iconURL: 'https://uxwing.com/wp-content/themes/uxwing/download/time-and-date/calendar-color-icon.png' });
+						.setTimestamp()
 	
 					client.channels.cache.get(channelNews).send({ embeds: [frEmbed] })
 	
@@ -284,7 +284,7 @@ client.on('interactionCreate', async interaction => {
 						.setAuthor({ name: 'Maintenance', iconURL: 'https://img.finalfantasyxiv.com/lds/h/0/U2uGfVX4GdZgU1jASO0m9h_xLg.png' })
 						.setTitle(listUpdate["title"][0])
 						.setURL(listUpdate["src"][0])
-						.setFooter({ text: listUpdate["date"][0], iconURL: 'https://uxwing.com/wp-content/themes/uxwing/download/time-and-date/calendar-color-icon.png' });
+						.setTimestamp()
 	
 					client.channels.cache.get(channelNews).send({ embeds: [frEmbed] })
 		
@@ -299,7 +299,7 @@ client.on('interactionCreate', async interaction => {
 						.setAuthor({ name: 'Maintenance', iconURL: 'https://img.finalfantasyxiv.com/lds/h/0/U2uGfVX4GdZgU1jASO0m9h_xLg.png' })
 						.setTitle(listUpdate["title"][0])
 						.setURL(listUpdate["src"][0])
-						.setFooter({ text: listUpdate["date"][0], iconURL: 'https://uxwing.com/wp-content/themes/uxwing/download/time-and-date/calendar-color-icon.png' });
+						.setTimestamp()
 	
 					client.channels.cache.get(channelNews).send({ embeds: [frEmbed] })
 	
@@ -370,7 +370,7 @@ client.on('interactionCreate', async interaction => {
 						.setAuthor({ name: 'Mises à jour', iconURL: 'https://img.finalfantasyxiv.com/lds/h/0/U2uGfVX4GdZgU1jASO0m9h_xLg.png' })
 						.setTitle(listUpdate["title"][0])
 						.setURL(listUpdate["src"][0])
-						.setFooter({ text: listUpdate["date"][0], iconURL: 'https://uxwing.com/wp-content/themes/uxwing/download/time-and-date/calendar-color-icon.png' });
+						.setTimestamp()
 	
 					client.channels.cache.get(channelNews).send({ embeds: [frEmbed] })
 		
@@ -385,7 +385,7 @@ client.on('interactionCreate', async interaction => {
 						.setAuthor({ name: 'Mises à jour', iconURL: 'https://img.finalfantasyxiv.com/lds/h/0/U2uGfVX4GdZgU1jASO0m9h_xLg.png' })
 						.setTitle(listUpdate["title"][0])
 						.setURL(listUpdate["src"][0])
-						.setFooter({ text: listUpdate["date"][0], iconURL: 'https://uxwing.com/wp-content/themes/uxwing/download/time-and-date/calendar-color-icon.png' });
+						.setTimestamp()
 	
 					client.channels.cache.get(channelNews).send({ embeds: [frEmbed] })
 	
@@ -456,7 +456,7 @@ client.on('interactionCreate', async interaction => {
 						.setAuthor({ name: 'État', iconURL: 'https://img.finalfantasyxiv.com/lds/h/0/U2uGfVX4GdZgU1jASO0m9h_xLg.png' })
 						.setTitle(listUpdate["title"][0])
 						.setURL(listUpdate["src"][0])
-						.setFooter({ text: listUpdate["date"][0], iconURL: 'https://uxwing.com/wp-content/themes/uxwing/download/time-and-date/calendar-color-icon.png' });
+						.setTimestamp()
 	
 					client.channels.cache.get(channelNews).send({ embeds: [frEmbed] })
 		
@@ -471,7 +471,7 @@ client.on('interactionCreate', async interaction => {
 						.setAuthor({ name: 'État', iconURL: 'https://img.finalfantasyxiv.com/lds/h/0/U2uGfVX4GdZgU1jASO0m9h_xLg.png' })
 						.setTitle(listUpdate["title"][0])
 						.setURL(listUpdate["src"][0])
-						.setFooter({ text: listUpdate["date"][0], iconURL: 'https://uxwing.com/wp-content/themes/uxwing/download/time-and-date/calendar-color-icon.png' });
+						.setTimestamp()
 	
 					client.channels.cache.get(channelNews).send({ embeds: [frEmbed] })
 	
@@ -490,6 +490,62 @@ client.on('interactionCreate', async interaction => {
     ************** END OF NEWS ALL UPDATE ***************
     ****************************************************/	
 
+   /****************************************************
+    ************* ZEVENT CHANNEL UPDATE ****************
+    ****************************************************/	
+   
+    async function UpdateZevent(){
+		const fs = require('node:fs');
+		const zapi = require('zevent-api');
+console.log('Update Zevent');
+
+		zapi.viewersCount((viwers) => {
+		zapi.donnationAmount((amount) => {
+		zapi.getOnline((online) => {
+			const s = new Array();
+			online.forEach((on) => {
+				s.push(on.display+" ("+on.game+")");
+			});
+			console.log(amount.formatted);
+	
+			
+		
+				var ZeventChiffre = new Object();
+				ZeventChiffre.StreamerEnLigne = [online.length]
+				ZeventChiffre.ViwerEnLigne  = viwers.formatted;
+				ZeventChiffre.TotalDon = amount.formatted;
+					
+		
+				fs.writeFile('./scrap/ZeventStats.json', JSON.stringify(ZeventChiffre, null, 3), (err)=>{
+					if(err)
+					console.log(err);
+				})
+		});
+		});
+		});  
+	
+	
+		return;
+			
+		}
+		
+	function EnvoieZevent(){
+			var listZevent = fs.readFileSync('./scrap/ZeventStats.json', 'utf-8')
+					console.log(listZevent);
+					const strListZevent = listZevent.replace('{','').replace('}','').replace('StreamerEnLigne','Streamer En Ligne ').replace('ViwerEnLigne','Viwer En Ligne ').replace('TotalDon','Total De Don ').replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"")
+					const frEmbed = new EmbedBuilder()
+						.setColor('#47e014')
+						.setAuthor({ name: 'Informations Zeven', iconURL: 'https://zevent.fr/assets/logo.5cb95698.png' })
+						.setThumbnail("https://zevent.fr/assets/logo.5cb95698.png")
+						.setDescription(strListZevent)
+						.setTimestamp()
+					client.channels.cache.get(channelNews).send({ embeds: [frEmbed] })
+		
+					
+				return null;
+		
+			}	
+
 //function WriteFile and Interval
 		
 setInterval(function(){
@@ -498,6 +554,7 @@ setInterval(function(){
 	updateNewsMaintenance()
 	updateNewsUpdates()
 	updateNewsStatus()
+	UpdateZevent()
 
 	console.log('set timer');
 
@@ -506,8 +563,10 @@ setInterval(function(){
 	setTimeout(function(){EnvoieNotifNewsMaintenance();}, 30000)
 	setTimeout(function(){EnvoieNotifNewsUpdates();}, 30000)
 	setTimeout(function(){EnvoieNotifNewsStatus();}, 30000)
+	setTimeout(function(){EnvoieZevent();}, 30000)
 
-}, 600000) //60000
+
+}, 600000) //600000
 
 function WriteFiles(file, data){
 
