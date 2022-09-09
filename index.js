@@ -497,7 +497,7 @@ client.on('interactionCreate', async interaction => {
     async function UpdateZevent(){
 		const fs = require('node:fs');
 		const zapi = require('zevent-api');
-console.log('Update Zevent');
+		console.log('Update Zevent');
 
 		zapi.viewersCount((viwers) => {
 		zapi.donnationAmount((amount) => {
@@ -528,8 +528,40 @@ console.log('Update Zevent');
 		return;
 			
 		}
+
+	function UpdateCanvaZevent(){
+		const puppeteer = require('puppeteer');
+	
+		(async () => {
+			const browser = await puppeteer.launch({headless: true}); 
+			const page = await browser.newPage();
+			await page.goto('https://place.zevent.fr');
+			page.click('.board-state')
+			await page.evaluate(async() => {
+				await new Promise(function(resolve) { 
+					   setTimeout(resolve, 2000)
+				});
+			});
+			await page.setViewport({
+				width: 1920,
+				height: 1080,
+				deviceScaleFactor: 10
+			  });
+			const select = await page.waitForSelector("div.game-container__inner img:nth-child(2)")
+			await select.screenshot({path: "zeventcanva.png"})
+	
+				await browser.close();  
+	  
+	
+		})();
+	
+		return;
+	}
+		
 		
 	function EnvoieZevent(){
+		const { AttachmentBuilder } = require('discord.js');
+		const file = new AttachmentBuilder('./zeventcanva.png');
 			var listZevent = fs.readFileSync('./scrap/ZeventStats.json', 'utf-8')
 					console.log(listZevent);
 					const strListZevent = listZevent.replace('{','').replace('}','').replace('StreamerEnLigne','Streamer En Ligne ').replace('ViwerEnLigne','Viwer En Ligne ').replace('TotalDon','Total De Don ').replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('[',"").replace(']',"").replace(',',"").replace(',',"")
@@ -538,9 +570,11 @@ console.log('Update Zevent');
 						.setAuthor({ name: 'Informations Zevent', iconURL: 'https://zevent.fr/assets/logo.5cb95698.png' })
 						.setThumbnail("https://zevent.fr/assets/logo.5cb95698.png")
 						.setDescription(strListZevent)
+						.setImage('attachment://zeventcanva.png')
 						.setTimestamp()
-					client.channels.cache.get(ZeventNews).send({ embeds: [frEmbed] })
-					client.channels.cache.get(channelNews).send({ embeds: [frEmbed] })
+
+					client.channels.cache.get(ZeventNews).send({ embeds: [frEmbed], files: [file] })
+					client.channels.cache.get(channelNews).send({ embeds: [frEmbed], files: [file] })
 
 		
 					
@@ -557,6 +591,7 @@ setInterval(function(){
 	updateNewsUpdates()
 	updateNewsStatus()
 	UpdateZevent()
+	UpdateCanvaZevent()
 
 	console.log('set timer');
 
