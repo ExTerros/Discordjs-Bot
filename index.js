@@ -2,7 +2,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, GatewayIntentBits, EmbedBuilder } = require('discord.js');
-const { token, channelNews } = require('./config.json');
+const { token, channelNews, ZeventNews } = require('./config.json');
 
 
 
@@ -532,14 +532,16 @@ console.log('Update Zevent');
 	function EnvoieZevent(){
 			var listZevent = fs.readFileSync('./scrap/ZeventStats.json', 'utf-8')
 					console.log(listZevent);
-					const strListZevent = listZevent.replace('{','').replace('}','').replace('StreamerEnLigne','Streamer En Ligne ').replace('ViwerEnLigne','Viwer En Ligne ').replace('TotalDon','Total De Don ').replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"")
+					const strListZevent = listZevent.replace('{','').replace('}','').replace('StreamerEnLigne','Streamer En Ligne ').replace('ViwerEnLigne','Viwer En Ligne ').replace('TotalDon','Total De Don ').replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('[',"").replace(']',"")
 					const frEmbed = new EmbedBuilder()
 						.setColor('#47e014')
-						.setAuthor({ name: 'Informations Zeven', iconURL: 'https://zevent.fr/assets/logo.5cb95698.png' })
+						.setAuthor({ name: 'Informations Zevent', iconURL: 'https://zevent.fr/assets/logo.5cb95698.png' })
 						.setThumbnail("https://zevent.fr/assets/logo.5cb95698.png")
 						.setDescription(strListZevent)
 						.setTimestamp()
+					client.channels.cache.get(ZeventNews).send({ embeds: [frEmbed] })
 					client.channels.cache.get(channelNews).send({ embeds: [frEmbed] })
+
 		
 					
 				return null;
@@ -566,7 +568,7 @@ setInterval(function(){
 	setTimeout(function(){EnvoieZevent();}, 30000)
 
 
-}, 600000) //600000
+}, 120000) //600000
 
 function WriteFiles(file, data){
 
