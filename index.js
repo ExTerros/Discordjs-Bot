@@ -532,7 +532,7 @@ console.log('Update Zevent');
 	function EnvoieZevent(){
 			var listZevent = fs.readFileSync('./scrap/ZeventStats.json', 'utf-8')
 					console.log(listZevent);
-					const strListZevent = listZevent.replace('{','').replace('}','').replace('StreamerEnLigne','Streamer En Ligne ').replace('ViwerEnLigne','Viwer En Ligne ').replace('TotalDon','Total De Don ').replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('[',"").replace(']',"")
+					const strListZevent = listZevent.replace('{','').replace('}','').replace('StreamerEnLigne','Streamer En Ligne ').replace('ViwerEnLigne','Viwer En Ligne ').replace('TotalDon','Total De Don ').replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('[',"").replace(']',"").replace(',',"").replace(',',"")
 					const frEmbed = new EmbedBuilder()
 						.setColor('#47e014')
 						.setAuthor({ name: 'Informations Zevent', iconURL: 'https://zevent.fr/assets/logo.5cb95698.png' })
@@ -568,7 +568,7 @@ setInterval(function(){
 	setTimeout(function(){EnvoieZevent();}, 30000)
 
 
-}, 120000) //600000
+}, 1200000) //600000
 
 function WriteFiles(file, data){
 
