@@ -67,7 +67,7 @@ client.on('interactionCreate', async interaction => {
 				var ListNewsTopics = await page.evaluate(()=>{
 		
 					var NewsTopics = { "title":[], "src":[], "file": [], "date": [], "text": []}
-					var elements = document.querySelectorAll('.news__content ul .ic__topics--list');
+					var elements = document.querySelectorAll('.news__content ul .ic__topics--list').value;
 		
 					for (let index = 0; index < 3; index++) {   
 						
@@ -160,7 +160,7 @@ client.on('interactionCreate', async interaction => {
             var ListNewsNotices = await page.evaluate(()=>{
     
                 var NewsNotices = { "title":[], "src":[], "date": []}
-                var elements = document.querySelectorAll('.news__content ul .news__list');
+                var elements = document.querySelectorAll('.news__content ul .news__list').value;
     
                 for (let index = 4; index < 7; index++) {   
                     
@@ -248,7 +248,7 @@ client.on('interactionCreate', async interaction => {
             var ListNewsMaintenance = await page.evaluate(()=>{
     
                 var NewsMaintenance = { "title":[], "src":[], "date": []}
-                var elements = document.querySelectorAll('.news__content ul .news__list');
+                var elements = document.querySelectorAll('.news__content ul .news__list').value;
     
                 for (let index = 0; index < 3; index++) {   
                     
@@ -335,7 +335,7 @@ client.on('interactionCreate', async interaction => {
 			var ListNewsUpdates = await page.evaluate(()=>{
 	
 				var NewsUpdates = { "title":[], "src":[], "date": []}
-				var elements = document.querySelectorAll('.news__content ul .news__list');
+				var elements = document.querySelectorAll('.news__content ul .news__list').value;
 	
 				for (let index = 4; index < 7; index++) {   
 					
@@ -422,7 +422,7 @@ client.on('interactionCreate', async interaction => {
 			var ListNewsStatus = await page.evaluate(()=>{
 	
 				var NewsStatus = { "title":[], "src":[], "date": []}
-				var elements = document.querySelectorAll('.news__content ul .news__list');
+				var elements = document.querySelectorAll('.news__content ul .news__list').value;
 	
 				for (let index = 4; index < 7; index++) {   
 					
@@ -513,7 +513,7 @@ client.on('interactionCreate', async interaction => {
 			var ListNewsStatus = await page.evaluate(()=>{
 	
 				var NewsStatus = { "title":[], "src":[], "date": []}
-				var elements = document.querySelectorAll('.news__content ul .news__list');
+				var elements = document.querySelectorAll('.news__content ul .news__list').value;
 	
 				for (let index = 4; index < 7; index++) {   
 					
@@ -606,7 +606,7 @@ client.on('interactionCreate', async interaction => {
 					var ListNewPatch = await page.evaluate(()=>{
 			
 						var NewPatch = { "title":[], "src":[], "img": []}
-						var elements = document.querySelectorAll('.style__List-sc-106zuld-2 .style__Item-sc-106zuld-3');
+						var elements = document.querySelectorAll('.style__List-sc-106zuld-2 .style__Item-sc-106zuld-3').value;
 			
 						for (let index = 0; index < 3; index++) {   
 							
