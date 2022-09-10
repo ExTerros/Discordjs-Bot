@@ -22,26 +22,25 @@ module.exports = {
         //get list of league of legends champion 
         const ddragonJson = await axios.get(`http://ddragon.leagueoflegends.com/cdn/${lolLastVersion}/data/fr_FR/champion.json`);
         await interaction.reply('Je recherche le champion');
+        if (ddragonJson.data['data'][strChampion]) {
+
 
         (async () => {
             const browser = await puppeteer.launch({headless: true}); 
             const page = await browser.newPage();
             await page.goto(`https://u.gg/lol/champions/${strChampion}/build`);
             await page.click('button[mode=primary]');
-            await page.evaluate(async() => {
-              await new Promise(function(resolve) { 
-                     setTimeout(resolve, 1000)
-              });
-          });
           await page.setViewport({
               width: 1920,
               height: 1080,
             });
-            await page.evaluate(async() => {
-              await new Promise(function(resolve) { 
-                     setTimeout(resolve, 3000)
-              });
-          });
+          await page.waitForSelector('#close-div-gpt-ad-sticky-bottom')
+          
+          await page.evaluate(async() => {
+            await new Promise(function(resolve) { 
+                   setTimeout(resolve, 2000)
+            });
+        });
           await page.click('#close-div-gpt-ad-sticky-bottom');
     
             const tier = await page.evaluate(() => {
@@ -84,9 +83,8 @@ module.exports = {
             const select = await page.waitForSelector("div.champion-recommended-build div.media-query_DESKTOP_MEDIUM__DESKTOP_LARGE")
             await select.screenshot({path: "./assets/build.png"})
         
-          // await browser.close();  
+          await browser.close();  
 
-        if (ddragonJson.data['data'][strChampion]) {
         const file = new AttachmentBuilder("./assets/build.png");
         const listJson = ddragonJson.data['data'][strChampion]; 
         const ChampEmbed = new EmbedBuilder()
@@ -114,12 +112,13 @@ module.exports = {
             .addFields(
                 { name: 'Type', value: `${tags}`, inline: true })
             interaction.editReply({ embeds: [ChampEmbedTag], files: [file] });
+      })();
+
         }else{
             interaction.editReply("Aucun champion ne porte ce nom")
         }
 
         
-    })();
 
         
     }
