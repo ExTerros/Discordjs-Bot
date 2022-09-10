@@ -1,6 +1,7 @@
 // Require the necessary discord.js classes
 const fs = require('node:fs');
 const path = require('node:path');
+const puppeteer = require('puppeteer');
 const { Client, Collection, GatewayIntentBits, EmbedBuilder } = require('discord.js');
 const { token, channelNews, ZeventNews } = require('./config.json');
 
@@ -54,7 +55,6 @@ client.on('interactionCreate', async interaction => {
     ****************************************************/	
 
 	async function updateNewsTopics(){
-		const puppeteer = require('puppeteer');
 		
 			(async () => {
 			const browser = await puppeteer.launch( ); 
@@ -147,7 +147,6 @@ client.on('interactionCreate', async interaction => {
     ****************************************************/	
    
     async function updateNewsNotices(){
-        const puppeteer = require('puppeteer');
     
         (async () => {
         const browser = await puppeteer.launch( ); 
@@ -235,7 +234,6 @@ client.on('interactionCreate', async interaction => {
 
 
     async function updateNewsMaintenance(){
-        const puppeteer = require('puppeteer');
     
         (async () => {
         const browser = await puppeteer.launch( ); 
@@ -322,7 +320,6 @@ client.on('interactionCreate', async interaction => {
     ****************************************************/	
 
 	async function updateNewsUpdates(){
-		const puppeteer = require('puppeteer');
 	
 		(async () => {
 		const browser = await puppeteer.launch( ); 
@@ -409,7 +406,6 @@ client.on('interactionCreate', async interaction => {
     ****************************************************/	
 
 	async function updateNewsStatus(){
-		const puppeteer = require('puppeteer');
 	
 		(async () => {
 		const browser = await puppeteer.launch( ); 
@@ -500,7 +496,6 @@ client.on('interactionCreate', async interaction => {
     ****************************************************/	
 
 	async function updateNewsStatus(){
-		const puppeteer = require('puppeteer');
 	
 		(async () => {
 		const browser = await puppeteer.launch( ); 
@@ -592,7 +587,7 @@ client.on('interactionCreate', async interaction => {
 
 	// async function updateNewsLOLPatch(){
 
-	// 	const puppeteer = require('puppeteer');
+	// 	 
 		
 			
 	// 			(async () => {
@@ -722,7 +717,6 @@ client.on('interactionCreate', async interaction => {
 		}
 
 	function UpdateCanvaZevent(){
-		const puppeteer = require('puppeteer');
 	
 		(async () => {
 		const browser = await puppeteer.launch( ); 
