@@ -798,7 +798,7 @@ setInterval(function(){
 	setTimeout(function(){EnvoieZevent();}, 30000)
 
 
-}, 30000) //1200000
+}, 1200000) //1200000
 
 function WriteFiles(file, data){
 
