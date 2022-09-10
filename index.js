@@ -49,7 +49,7 @@ client.on('interactionCreate', async interaction => {
 	}
 });
 
-		/****************************************************
+	/****************************************************
     ************ NEWS CHANNEL TOPIC UPDATE **************
     ****************************************************/	
 
@@ -590,7 +590,7 @@ client.on('interactionCreate', async interaction => {
     ***************** PATCH LOL UPDATE ******************
     ****************************************************/
 
-	function updateNewsLOLPatch(){
+	async function updateNewsLOLPatch(){
 
 		const puppeteer = require('puppeteer');
 		

@@ -54,8 +54,8 @@ client.on('interactionCreate', async interaction => {
     ****************************************************/	
 
 	async function updateNewsTopics(){
-		const puppeteer = require('puppeteer');
-		
+	const puppeteer = require('puppeteer');
+
 			(async () => {
 			const browser = await puppeteer.launch({headless: true}); 
 
@@ -590,7 +590,7 @@ client.on('interactionCreate', async interaction => {
     ***************** PATCH LOL UPDATE ******************
     ****************************************************/
 
-	function updateNewsLOLPatch(){
+	async function updateNewsLOLPatch(){
 
 		const puppeteer = require('puppeteer');
 		
@@ -798,7 +798,7 @@ setInterval(function(){
 	setTimeout(function(){EnvoieZevent();}, 30000)
 
 
-}, 30000) //1200000
+}, 1200000) //1200000
 
 function WriteFiles(file, data){
 
