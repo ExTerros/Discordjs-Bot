@@ -63,12 +63,12 @@ client.on('interactionCreate', async interaction => {
 				'--no-sandbox',
 				'--disable-gpu',
 				'--no-first-run',
-				`--proxy-server=${proxyServer}`,
+				'--proxy-server=127.0.0.1:9876',
 			]}); 
 
 				const page = await browser.newPage();
 				await page.goto('https://fr.finalfantasyxiv.com/lodestone/topics/');
-				await page.waitForNavigation();		
+						
 				var ListNewsTopics = await page.evaluate(()=>{
 					var NewsTopics = { "title":[], "src":[], "file": [], "date": [], "text": []}
 					var elements = document.querySelectorAll('.news__content ul .ic__topics--list');
@@ -160,12 +160,12 @@ client.on('interactionCreate', async interaction => {
 			'--no-sandbox',
 			'--disable-gpu',
 			'--no-first-run',
-			`--proxy-server=${proxyServer}`,
+			'--proxy-server=127.0.0.1:9876',
 		]}); 
 
             const page = await browser.newPage();
             await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/1'); 
-			await page.waitForNavigation();
+			
     
             var ListNewsNotices = await page.evaluate(()=>{
     
@@ -253,12 +253,12 @@ client.on('interactionCreate', async interaction => {
 			'--no-sandbox',
 			'--disable-gpu',
 			'--no-first-run',
-			`--proxy-server=${proxyServer}`,
+			'--proxy-server=127.0.0.1:9876',
 		]}); 
 
             const page = await browser.newPage();
             await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/2');
-			await page.waitForNavigation();
+			
     
             var ListNewsMaintenance = await page.evaluate(()=>{
                 var NewsMaintenance = { "title":[], "src":[], "date": []}
@@ -345,12 +345,12 @@ client.on('interactionCreate', async interaction => {
 			'--no-sandbox',
 			'--disable-gpu',
 			'--no-first-run',
-			`--proxy-server=${proxyServer}`,
+			'--proxy-server=127.0.0.1:9876',
 		]}); 
 
 			const page = await browser.newPage();
 			await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/3');
-			await page.waitForNavigation();
+			
 				
 			var ListNewsUpdates = await page.evaluate(()=>{
 				var NewsUpdates = { "title":[], "src":[], "date": []}
@@ -437,12 +437,12 @@ client.on('interactionCreate', async interaction => {
 			'--no-sandbox',
 			'--disable-gpu',
 			'--no-first-run',
-			`--proxy-server=${proxyServer}`,
+			'--proxy-server=127.0.0.1:9876',
 		]}); 
 
 			const page = await browser.newPage();
 			await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/4');
-			await page.waitForNavigation();
+			
 				
 			var ListNewsStatus = await page.evaluate(()=>{
 				var NewsStatus = { "title":[], "src":[], "date": []}
@@ -532,12 +532,12 @@ client.on('interactionCreate', async interaction => {
 			'--no-sandbox',
 			'--disable-gpu',
 			'--no-first-run',
-			`--proxy-server=${proxyServer}`,
+			'--proxy-server=127.0.0.1:9876',
 		]}); 
 
 			const page = await browser.newPage();
 			await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/4');
-			await page.waitForNavigation();
+			
 
 			var ListNewsStatus = await page.evaluate(()=>{
 				var NewsStatus = { "title":[], "src":[], "date": []}
@@ -628,13 +628,13 @@ client.on('interactionCreate', async interaction => {
 					'--no-sandbox',
 					'--disable-gpu',
 					'--no-first-run',
-					`--proxy-server=${proxyServer}`,
+					'--proxy-server=127.0.0.1:9876',
 				]}); 
 
 					const page = await browser.newPage();
 					await page.goto('https://www.leagueoflegends.com/fr-fr/news/tags/patch-notes/');
 					
-					await page.waitForNavigation();
+					
 					var ListNewPatch = await page.evaluate(()=>{
 						
 						var NewPatch = { "title":[], "src":[], "img": []}
@@ -760,7 +760,7 @@ client.on('interactionCreate', async interaction => {
 			'--no-sandbox',
 			'--disable-gpu',
 			'--no-first-run',
-			`--proxy-server=${proxyServer}`,
+			'--proxy-server=127.0.0.1:9876',
 		]}); 
 
 			const page = await browser.newPage();
