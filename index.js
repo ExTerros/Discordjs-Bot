@@ -57,14 +57,17 @@ client.on('interactionCreate', async interaction => {
 	async function updateNewsTopics(){
 
 			(async () => {
-			const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser'}); 
+			const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser',
+			args: [
+				'--disable-setuid-sandbox',
+				'--no-sandbox',
+				'--disable-gpu',
+				'--no-first-run',
+				`--proxy-server=${proxyServer}`,
+			]}); 
 
 				const page = await browser.newPage();
-				await page.goto('https://fr.finalfantasyxiv.com/lodestone/topics/', {
-					waitUntil: 'load',
-					// Remove the timeout
-					timeout: 0
-				});
+				await page.goto('https://fr.finalfantasyxiv.com/lodestone/topics/');
 				await page.waitForNavigation();		
 				var ListNewsTopics = await page.evaluate(()=>{
 					var NewsTopics = { "title":[], "src":[], "file": [], "date": [], "text": []}
@@ -151,14 +154,17 @@ client.on('interactionCreate', async interaction => {
         
     
         (async () => {
-        const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser'}); 
+        const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser',
+		args: [
+			'--disable-setuid-sandbox',
+			'--no-sandbox',
+			'--disable-gpu',
+			'--no-first-run',
+			`--proxy-server=${proxyServer}`,
+		]}); 
 
             const page = await browser.newPage();
-            await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/1', {
-				waitUntil: 'load',
-				// Remove the timeout
-				timeout: 0
-			}); 
+            await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/1'); 
 			await page.waitForNavigation();
     
             var ListNewsNotices = await page.evaluate(()=>{
@@ -241,14 +247,17 @@ client.on('interactionCreate', async interaction => {
         
     
         (async () => {
-        const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser'}); 
+        const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser',
+		args: [
+			'--disable-setuid-sandbox',
+			'--no-sandbox',
+			'--disable-gpu',
+			'--no-first-run',
+			`--proxy-server=${proxyServer}`,
+		]}); 
 
             const page = await browser.newPage();
-            await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/2', {
-				waitUntil: 'load',
-				// Remove the timeout
-				timeout: 0
-			});
+            await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/2');
 			await page.waitForNavigation();
     
             var ListNewsMaintenance = await page.evaluate(()=>{
@@ -330,14 +339,17 @@ client.on('interactionCreate', async interaction => {
 		
 	
 		(async () => {
-		const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser'}); 
+		const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser',
+		args: [
+			'--disable-setuid-sandbox',
+			'--no-sandbox',
+			'--disable-gpu',
+			'--no-first-run',
+			`--proxy-server=${proxyServer}`,
+		]}); 
 
 			const page = await browser.newPage();
-			await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/3', {
-				waitUntil: 'load',
-				// Remove the timeout
-				timeout: 0
-			});
+			await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/3');
 			await page.waitForNavigation();
 				
 			var ListNewsUpdates = await page.evaluate(()=>{
@@ -419,14 +431,17 @@ client.on('interactionCreate', async interaction => {
 		
 	
 		(async () => {
-		const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser'}); 
+		const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser',
+		args: [
+			'--disable-setuid-sandbox',
+			'--no-sandbox',
+			'--disable-gpu',
+			'--no-first-run',
+			`--proxy-server=${proxyServer}`,
+		]}); 
 
 			const page = await browser.newPage();
-			await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/4', {
-				waitUntil: 'load',
-				// Remove the timeout
-				timeout: 0
-			});
+			await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/4');
 			await page.waitForNavigation();
 				
 			var ListNewsStatus = await page.evaluate(()=>{
@@ -511,14 +526,17 @@ client.on('interactionCreate', async interaction => {
 	async function updateNewsStatus(){
 	
 		(async () => {
-		const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser'}); 
+		const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser',
+		args: [
+			'--disable-setuid-sandbox',
+			'--no-sandbox',
+			'--disable-gpu',
+			'--no-first-run',
+			`--proxy-server=${proxyServer}`,
+		]}); 
 
 			const page = await browser.newPage();
-			await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/4', {
-				waitUntil: 'load',
-				// Remove the timeout
-				timeout: 0
-			});
+			await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/4');
 			await page.waitForNavigation();
 
 			var ListNewsStatus = await page.evaluate(()=>{
@@ -604,14 +622,17 @@ client.on('interactionCreate', async interaction => {
 
 		
 				(async () => {
-				const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser'}); 
+				const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser',
+				args: [
+					'--disable-setuid-sandbox',
+					'--no-sandbox',
+					'--disable-gpu',
+					'--no-first-run',
+					`--proxy-server=${proxyServer}`,
+				]}); 
 
 					const page = await browser.newPage();
-					await page.goto('https://www.leagueoflegends.com/fr-fr/news/tags/patch-notes/', {
-						waitUntil: 'load',
-						// Remove the timeout
-						timeout: 0
-					});
+					await page.goto('https://www.leagueoflegends.com/fr-fr/news/tags/patch-notes/');
 					
 					await page.waitForNavigation();
 					var ListNewPatch = await page.evaluate(()=>{
@@ -733,14 +754,17 @@ client.on('interactionCreate', async interaction => {
 	function UpdateCanvaZevent(){
 	
 		(async () => {
-		const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser'}); 
+		const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser',
+		args: [
+			'--disable-setuid-sandbox',
+			'--no-sandbox',
+			'--disable-gpu',
+			'--no-first-run',
+			`--proxy-server=${proxyServer}`,
+		]}); 
 
 			const page = await browser.newPage();
-			await page.goto('https://place.zevent.fr', {
-				waitUntil: 'load',
-				// Remove the timeout
-				timeout: 0
-			});
+			await page.goto('https://place.zevent.fr');
 			page.click('.board-state')
 			await page.evaluate(async() => {
 				await new Promise(function(resolve) { 
@@ -801,16 +825,16 @@ setInterval(function(){
 
 	console.log('set timer');
 
-	setTimeout(function(){EnvoieNotifNewsTopic();}, 50000)
-	setTimeout(function(){EnvoieNotifNewsNotice();}, 50000)
-	setTimeout(function(){EnvoieNotifNewsMaintenance();}, 50000)
-	setTimeout(function(){EnvoieNotifNewsUpdates();}, 50000)
-	setTimeout(function(){EnvoieNotifNewsStatus();}, 50000)
-	setTimeout(function(){EnvoieNotifNewsLOLPatch();}, 50000)
-	setTimeout(function(){EnvoieZevent();}, 50000)
+	setTimeout(function(){EnvoieNotifNewsTopic();}, 30000)
+	setTimeout(function(){EnvoieNotifNewsNotice();}, 30000)
+	setTimeout(function(){EnvoieNotifNewsMaintenance();}, 30000)
+	setTimeout(function(){EnvoieNotifNewsUpdates();}, 30000)
+	setTimeout(function(){EnvoieNotifNewsStatus();}, 30000)
+	setTimeout(function(){EnvoieNotifNewsLOLPatch();}, 30000)
+	setTimeout(function(){EnvoieZevent();}, 30000)
 
 
-}, 80000) //1200000
+}, 30000) //1200000
 
 function WriteFiles(file, data){
 
