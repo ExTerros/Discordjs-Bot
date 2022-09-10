@@ -71,11 +71,11 @@ client.on('interactionCreate', async interaction => {
 		
 					for (let index = 0; index < 3; index++) {   
 						
-						NewsTopics["title"].push(elements[index].querySelector('.news__list--title a')?.textContent)
-						NewsTopics["src"].push(elements[index].querySelector('.news__list--banner a')?.href )
-						NewsTopics["file"].push(elements[index].querySelector('.news__list--img img')?.src )
-						NewsTopics["text"].push(elements[index].querySelector('.mdl-text__xs-m16')?.textContent )
-						NewsTopics["date"].push(elements[index].querySelector('.news__list--time span')?.textContent )
+						NewsTopics["title"].push(elements[index].querySelector('.news__list--title a').textContent)
+						NewsTopics["src"].push(elements[index].querySelector('.news__list--banner a').href )
+						NewsTopics["file"].push(elements[index].querySelector('.news__list--img img').src )
+						NewsTopics["text"].push(elements[index].querySelector('.mdl-text__xs-m16').textContent )
+						NewsTopics["date"].push(elements[index].querySelector('.news__list--time span').textContent )
 						
 					}
 					return NewsTopics 
@@ -164,9 +164,9 @@ client.on('interactionCreate', async interaction => {
     
                 for (let index = 4; index < 7; index++) {   
                     
-                    NewsNotices["title"].push(elements[index].querySelector('.news__list--title')?.textContent)
-                    NewsNotices["src"].push(elements[index].querySelector('.news__list a')?.href )
-                    NewsNotices["date"].push(elements[index].querySelector('.news__list--time span')?.textContent )
+                    NewsNotices["title"].push(elements[index].querySelector('.news__list--title').textContent)
+                    NewsNotices["src"].push(elements[index].querySelector('.news__list a').href )
+                    NewsNotices["date"].push(elements[index].querySelector('.news__list--time span').textContent )
                     
                 }
                 return NewsNotices 
@@ -252,9 +252,9 @@ client.on('interactionCreate', async interaction => {
     
                 for (let index = 0; index < 3; index++) {   
                     
-                    NewsMaintenance["title"].push(elements[index].querySelector('.news__list--title')?.textContent)
-                    NewsMaintenance["src"].push(elements[index].querySelector('.news__list a')?.href )
-                    NewsMaintenance["date"].push(elements[index].querySelector('.news__list--time span')?.textContent )
+                    NewsMaintenance["title"].push(elements[index].querySelector('.news__list--title').textContent)
+                    NewsMaintenance["src"].push(elements[index].querySelector('.news__list a').href )
+                    NewsMaintenance["date"].push(elements[index].querySelector('.news__list--time span').textContent )
                     
                 }
                 return NewsMaintenance 
@@ -339,9 +339,9 @@ client.on('interactionCreate', async interaction => {
 	
 				for (let index = 4; index < 7; index++) {   
 					
-					NewsUpdates["title"].push(elements[index].querySelector('.news__list--title')?.textContent)
-					NewsUpdates["src"].push(elements[index].querySelector('.news__list a')?.href )
-					NewsUpdates["date"].push(elements[index].querySelector('.news__list--time span')?.textContent )
+					NewsUpdates["title"].push(elements[index].querySelector('.news__list--title').textContent)
+					NewsUpdates["src"].push(elements[index].querySelector('.news__list a').href )
+					NewsUpdates["date"].push(elements[index].querySelector('.news__list--time span').textContent )
 					
 				}
 				return NewsUpdates 
@@ -426,9 +426,9 @@ client.on('interactionCreate', async interaction => {
 	
 				for (let index = 4; index < 7; index++) {   
 					
-					NewsStatus["title"].push(elements[index].querySelector('.news__list--title')?.textContent)
-					NewsStatus["src"].push(elements[index].querySelector('.news__list a')?.href )
-					NewsStatus["date"].push(elements[index].querySelector('.news__list--time span')?.textContent )
+					NewsStatus["title"].push(elements[index].querySelector('.news__list--title').textContent)
+					NewsStatus["src"].push(elements[index].querySelector('.news__list a').href )
+					NewsStatus["date"].push(elements[index].querySelector('.news__list--time span').textContent )
 					
 				}
 				return NewsStatus 
@@ -517,9 +517,9 @@ client.on('interactionCreate', async interaction => {
 	
 				for (let index = 4; index < 7; index++) {   
 					
-					NewsStatus["title"].push(elements[index].querySelector('.news__list--title')?.textContent)
-					NewsStatus["src"].push(elements[index].querySelector('.news__list a')?.href )
-					NewsStatus["date"].push(elements[index].querySelector('.news__list--time span')?.textContent )
+					NewsStatus["title"].push(elements[index].querySelector('.news__list--title').textContent)
+					NewsStatus["src"].push(elements[index].querySelector('.news__list a').href )
+					NewsStatus["date"].push(elements[index].querySelector('.news__list--time span').textContent )
 					
 				}
 				return NewsStatus 
@@ -610,9 +610,9 @@ client.on('interactionCreate', async interaction => {
 			
 						for (let index = 0; index < 3; index++) {   
 							
-							NewPatch["title"].push(elements[index].querySelector('.style__Title-sc-1h41bzo-8')?.textContent)
-							NewPatch["src"].push(elements[index].querySelector('.style__Wrapper-sc-1h41bzo-0')?.href )
-							NewPatch["img"].push(elements[index].querySelector('.style__ImageWrapper-sc-1h41bzo-5 img')?.src )
+							NewPatch["title"].push(elements[index].querySelector('.style__Title-sc-1h41bzo-8').textContent)
+							NewPatch["src"].push(elements[index].querySelector('.style__Wrapper-sc-1h41bzo-0').href )
+							NewPatch["img"].push(elements[index].querySelector('.style__ImageWrapper-sc-1h41bzo-5 img').src )
 		
 							
 						}
