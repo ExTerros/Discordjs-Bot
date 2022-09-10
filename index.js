@@ -54,7 +54,7 @@ client.on('interactionCreate', async interaction => {
     ****************************************************/	
 
 	async function updateNewsTopics(){
-	const puppeteer = require('puppeteer-core');
+	const puppeteer = require('puppeteer');
 
 			(async () => {
 			const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser', args:['--user-data-dir=/home/rut/.config/google-chrome/Profile 1']}); 
@@ -147,7 +147,7 @@ client.on('interactionCreate', async interaction => {
     ****************************************************/	
    
     async function updateNewsNotices(){
-        const puppeteer = require('puppeteer-core');
+        const puppeteer = require('puppeteer');
     
         (async () => {
         const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser', args:['--user-data-dir=/home/rut/.config/google-chrome/Profile 1']}); 
@@ -235,7 +235,7 @@ client.on('interactionCreate', async interaction => {
 
 
     async function updateNewsMaintenance(){
-        const puppeteer = require('puppeteer-core');
+        const puppeteer = require('puppeteer');
     
         (async () => {
         const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser', args:['--user-data-dir=/home/rut/.config/google-chrome/Profile 1']}); 
@@ -322,7 +322,7 @@ client.on('interactionCreate', async interaction => {
     ****************************************************/	
 
 	async function updateNewsUpdates(){
-		const puppeteer = require('puppeteer-core');
+		const puppeteer = require('puppeteer');
 	
 		(async () => {
 		const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser', args:['--user-data-dir=/home/rut/.config/google-chrome/Profile 1']}); 
@@ -409,7 +409,7 @@ client.on('interactionCreate', async interaction => {
     ****************************************************/	
 
 	async function updateNewsStatus(){
-		const puppeteer = require('puppeteer-core');
+		const puppeteer = require('puppeteer');
 	
 		(async () => {
 		const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser', args:['--user-data-dir=/home/rut/.config/google-chrome/Profile 1']}); 
@@ -500,7 +500,7 @@ client.on('interactionCreate', async interaction => {
     ****************************************************/	
 
 	async function updateNewsStatus(){
-		const puppeteer = require('puppeteer-core');
+		const puppeteer = require('puppeteer');
 	
 		(async () => {
 		const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser', args:['--user-data-dir=/home/rut/.config/google-chrome/Profile 1']}); 
@@ -592,7 +592,7 @@ client.on('interactionCreate', async interaction => {
 
 	async function updateNewsLOLPatch(){
 
-		const puppeteer = require('puppeteer-core');
+		const puppeteer = require('puppeteer');
 		
 			
 				(async () => {
@@ -722,7 +722,7 @@ client.on('interactionCreate', async interaction => {
 		}
 
 	function UpdateCanvaZevent(){
-		const puppeteer = require('puppeteer-core');
+		const puppeteer = require('puppeteer');
 	
 		(async () => {
 		const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser', args:['--user-data-dir=/home/rut/.config/google-chrome/Profile 1']}); 
