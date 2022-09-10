@@ -26,7 +26,7 @@ module.exports = {
 
 
         (async () => {
-            const browser = await puppeteer.launch({headless: true}); 
+            const browser = await puppeteer.launch({headless: true, executablePath: '/usr/bin/chromium-browser'}); 
             const page = await browser.newPage();
             await page.goto(`https://u.gg/lol/champions/${strChampion}/build`);
             await page.click('button[mode=primary]');
