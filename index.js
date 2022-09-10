@@ -63,6 +63,7 @@ client.on('interactionCreate', async interaction => {
 				await page.goto('https://fr.finalfantasyxiv.com/lodestone/topics/');
 		
 				console.log('UpdateTopics')
+				await page.waitForNavigation();
 		
 				var ListNewsTopics = await page.evaluate(()=>{
 		
@@ -154,6 +155,7 @@ client.on('interactionCreate', async interaction => {
 
             const page = await browser.newPage();
             await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/1');
+			await page.waitForNavigation();
     
             console.log('Update Notice')
     
@@ -242,6 +244,7 @@ client.on('interactionCreate', async interaction => {
 
             const page = await browser.newPage();
             await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/2');
+			await page.waitForNavigation();
     
             console.log('UpdateNews Maintenance')
     
@@ -329,6 +332,7 @@ client.on('interactionCreate', async interaction => {
 
 			const page = await browser.newPage();
 			await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/3');
+			await page.waitForNavigation();
 	
 			console.log('Update Updates')
 	
@@ -416,6 +420,7 @@ client.on('interactionCreate', async interaction => {
 
 			const page = await browser.newPage();
 			await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/4');
+			await page.waitForNavigation();
 	
 			console.log('Update Status')
 	
@@ -507,6 +512,7 @@ client.on('interactionCreate', async interaction => {
 
 			const page = await browser.newPage();
 			await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/4');
+			await page.waitForNavigation();
 	
 			console.log('Update Status')
 	
@@ -600,6 +606,7 @@ client.on('interactionCreate', async interaction => {
 
 					const page = await browser.newPage();
 					await page.goto('https://www.leagueoflegends.com/fr-fr/news/tags/patch-notes/');
+					await page.waitForNavigation();
 			
 					console.log('Update Status')
 			
@@ -740,6 +747,7 @@ client.on('interactionCreate', async interaction => {
 				height: 1080,
 				deviceScaleFactor: 10
 			  });
+				await page.waitForNavigation();
 			const select = await page.waitForSelector("div.game-container__inner img:nth-child(2)")
 			await select.screenshot({path: "./assets/zeventcanva.png"})
 	
