@@ -246,7 +246,11 @@ client.on('interactionCreate', async interaction => {
 
             const page = await browser.newPage();
             await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/2');
-			await page.waitForNavigation();
+			await page.evaluate(async() => {
+				await new Promise(function(resolve) { 
+					   setTimeout(resolve, 2000)
+				});
+			});
     
     
             var ListNewsMaintenance = await page.evaluate(()=>{
@@ -333,7 +337,11 @@ client.on('interactionCreate', async interaction => {
 
 			const page = await browser.newPage();
 			await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/3');
-			await page.waitForNavigation();
+			await page.evaluate(async() => {
+				await new Promise(function(resolve) { 
+					   setTimeout(resolve, 2000)
+				});
+			});
 	
 	
 			var ListNewsUpdates = await page.evaluate(()=>{
@@ -420,7 +428,11 @@ client.on('interactionCreate', async interaction => {
 
 			const page = await browser.newPage();
 			await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/4');
-			await page.waitForNavigation();
+			await page.evaluate(async() => {
+				await new Promise(function(resolve) { 
+					   setTimeout(resolve, 2000)
+				});
+			});
 	
 	
 			var ListNewsStatus = await page.evaluate(()=>{
@@ -510,9 +522,17 @@ client.on('interactionCreate', async interaction => {
 
 			const page = await browser.newPage();
 			await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/4');
-			await page.waitForNavigation();
+			await page.evaluate(async() => {
+				await new Promise(function(resolve) { 
+					   setTimeout(resolve, 2000)
+				});
+			});
 	
-	
+			await page.evaluate(async() => {
+				await new Promise(function(resolve) { 
+					   setTimeout(resolve, 2000)
+				});
+			});
 			var ListNewsStatus = await page.evaluate(()=>{
 	
 				var NewsStatus = { "title":[], "src":[], "date": []}
@@ -601,7 +621,11 @@ client.on('interactionCreate', async interaction => {
 
 					const page = await browser.newPage();
 					await page.goto('https://www.leagueoflegends.com/fr-fr/news/tags/patch-notes/');
-			
+					await page.evaluate(async() => {
+						await new Promise(function(resolve) { 
+							   setTimeout(resolve, 2000)
+						});
+					});
 			
 					var ListNewPatch = await page.evaluate(()=>{
 			
