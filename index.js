@@ -63,7 +63,7 @@ client.on('interactionCreate', async interaction => {
 				'--no-sandbox',
 				'--disable-gpu',
 				'--no-first-run',
-				'--proxy-server=127.0.0.1:9876',
+				'--proxy-server=159.197.128.41:9876',
 			]}); 
 
 				const page = await browser.newPage();
@@ -160,7 +160,7 @@ client.on('interactionCreate', async interaction => {
 			'--no-sandbox',
 			'--disable-gpu',
 			'--no-first-run',
-			'--proxy-server=127.0.0.1:9876',
+			'--proxy-server=159.197.128.41:9876',
 		]}); 
 
             const page = await browser.newPage();
@@ -253,7 +253,7 @@ client.on('interactionCreate', async interaction => {
 			'--no-sandbox',
 			'--disable-gpu',
 			'--no-first-run',
-			'--proxy-server=127.0.0.1:9876',
+			'--proxy-server=159.197.128.41:9876',
 		]}); 
 
             const page = await browser.newPage();
@@ -345,7 +345,7 @@ client.on('interactionCreate', async interaction => {
 			'--no-sandbox',
 			'--disable-gpu',
 			'--no-first-run',
-			'--proxy-server=127.0.0.1:9876',
+			'--proxy-server=159.197.128.41:9876',
 		]}); 
 
 			const page = await browser.newPage();
@@ -437,7 +437,7 @@ client.on('interactionCreate', async interaction => {
 			'--no-sandbox',
 			'--disable-gpu',
 			'--no-first-run',
-			'--proxy-server=127.0.0.1:9876',
+			'--proxy-server=159.197.128.41:9876',
 		]}); 
 
 			const page = await browser.newPage();
@@ -532,7 +532,7 @@ client.on('interactionCreate', async interaction => {
 			'--no-sandbox',
 			'--disable-gpu',
 			'--no-first-run',
-			'--proxy-server=127.0.0.1:9876',
+			'--proxy-server=159.197.128.41:9876',
 		]}); 
 
 			const page = await browser.newPage();
@@ -628,7 +628,7 @@ client.on('interactionCreate', async interaction => {
 					'--no-sandbox',
 					'--disable-gpu',
 					'--no-first-run',
-					'--proxy-server=127.0.0.1:9876',
+					'--proxy-server=159.197.128.41:9876',
 				]}); 
 
 					const page = await browser.newPage();
@@ -760,7 +760,7 @@ client.on('interactionCreate', async interaction => {
 			'--no-sandbox',
 			'--disable-gpu',
 			'--no-first-run',
-			'--proxy-server=127.0.0.1:9876',
+			'--proxy-server=159.197.128.41:9876',
 		]}); 
 
 			const page = await browser.newPage();
