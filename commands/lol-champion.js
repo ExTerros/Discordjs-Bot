@@ -41,7 +41,7 @@ module.exports = {
                    setTimeout(resolve, 2000)
             });
         });
-          await page.click('#close-div-gpt-ad-sticky-bottom');
+          
     
             const tier = await page.evaluate(() => {
                 const tier = document.querySelector(".champion-tier .tier");
@@ -79,7 +79,6 @@ module.exports = {
             
                 return MatchesText;
               });
-              
             const select = await page.waitForSelector("div.champion-recommended-build div.media-query_DESKTOP_MEDIUM__DESKTOP_LARGE")
             await select.screenshot({path: "./assets/build.png"})
         
