@@ -59,7 +59,6 @@ client.on('interactionCreate', async interaction => {
 			(async () => {
 			const browser = await puppeteer.launch({headless: true, executablePath: '/usr/bin/chromium-browser'}); 
  
-
 				const page = await browser.newPage();
 				await page.goto('https://fr.finalfantasyxiv.com/lodestone/topics/');
 		
@@ -69,7 +68,7 @@ client.on('interactionCreate', async interaction => {
 		
 					var NewsTopics = { "title":[], "src":[], "file": [], "date": [], "text": []}
 					var elements = document.querySelectorAll('.news__content ul .ic__topics--list');
-		
+					console.log(elements);
 					for (let index = 0; index < 3; index++) {   
 						
 						NewsTopics["title"].push(elements[index].querySelector('.news__list--title a').textContent)
