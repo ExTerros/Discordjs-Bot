@@ -60,7 +60,11 @@ client.on('interactionCreate', async interaction => {
 			const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser'}); 
 
 				const page = await browser.newPage();
-				await page.goto('https://fr.finalfantasyxiv.com/lodestone/topics/');
+				await page.goto('https://fr.finalfantasyxiv.com/lodestone/topics/', {
+					waitUntil: 'load',
+					// Remove the timeout
+					timeout: 0
+				});
 				await page.waitForNavigation();		
 				var ListNewsTopics = await page.evaluate(()=>{
 					var NewsTopics = { "title":[], "src":[], "file": [], "date": [], "text": []}
@@ -150,7 +154,11 @@ client.on('interactionCreate', async interaction => {
         const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser'}); 
 
             const page = await browser.newPage();
-            await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/1'); 
+            await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/1', {
+				waitUntil: 'load',
+				// Remove the timeout
+				timeout: 0
+			}); 
 			await page.waitForNavigation();
     
             var ListNewsNotices = await page.evaluate(()=>{
@@ -236,7 +244,11 @@ client.on('interactionCreate', async interaction => {
         const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser'}); 
 
             const page = await browser.newPage();
-            await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/2');
+            await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/2', {
+				waitUntil: 'load',
+				// Remove the timeout
+				timeout: 0
+			});
 			await page.waitForNavigation();
     
             var ListNewsMaintenance = await page.evaluate(()=>{
@@ -321,7 +333,11 @@ client.on('interactionCreate', async interaction => {
 		const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser'}); 
 
 			const page = await browser.newPage();
-			await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/3');
+			await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/3', {
+				waitUntil: 'load',
+				// Remove the timeout
+				timeout: 0
+			});
 			await page.waitForNavigation();
 				
 			var ListNewsUpdates = await page.evaluate(()=>{
@@ -406,7 +422,11 @@ client.on('interactionCreate', async interaction => {
 		const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser'}); 
 
 			const page = await browser.newPage();
-			await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/4');
+			await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/4', {
+				waitUntil: 'load',
+				// Remove the timeout
+				timeout: 0
+			});
 			await page.waitForNavigation();
 				
 			var ListNewsStatus = await page.evaluate(()=>{
@@ -494,7 +514,11 @@ client.on('interactionCreate', async interaction => {
 		const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser'}); 
 
 			const page = await browser.newPage();
-			await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/4');
+			await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/4', {
+				waitUntil: 'load',
+				// Remove the timeout
+				timeout: 0
+			});
 			await page.waitForNavigation();
 
 			var ListNewsStatus = await page.evaluate(()=>{
@@ -583,7 +607,11 @@ client.on('interactionCreate', async interaction => {
 				const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser'}); 
 
 					const page = await browser.newPage();
-					await page.goto('https://www.leagueoflegends.com/fr-fr/news/tags/patch-notes/');
+					await page.goto('https://www.leagueoflegends.com/fr-fr/news/tags/patch-notes/', {
+						waitUntil: 'load',
+						// Remove the timeout
+						timeout: 0
+					});
 					
 					await page.waitForNavigation();
 					var ListNewPatch = await page.evaluate(()=>{
@@ -708,7 +736,11 @@ client.on('interactionCreate', async interaction => {
 		const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser'}); 
 
 			const page = await browser.newPage();
-			await page.goto('https://place.zevent.fr');
+			await page.goto('https://place.zevent.fr', {
+				waitUntil: 'load',
+				// Remove the timeout
+				timeout: 0
+			});
 			page.click('.board-state')
 			await page.evaluate(async() => {
 				await new Promise(function(resolve) { 
