@@ -1,7 +1,6 @@
 // Require the necessary discord.js classes
 const fs = require('node:fs');
 const path = require('node:path');
-const puppeteer = require('puppeteer');
 const { Client, Collection, GatewayIntentBits, EmbedBuilder } = require('discord.js');
 const { token, channelNews, ZeventNews } = require('./config.json');
 
@@ -50,25 +49,26 @@ client.on('interactionCreate', async interaction => {
 	}
 });
 
-	/****************************************************
+		/****************************************************
     ************ NEWS CHANNEL TOPIC UPDATE **************
     ****************************************************/	
 
 	async function updateNewsTopics(){
-		
+	const puppeteer = require('puppeteer');
+
 			(async () => {
 			const browser = await puppeteer.launch({headless: true, executablePath: '/usr/bin/chromium-browser'}); 
- 
+
 				const page = await browser.newPage();
 				await page.goto('https://fr.finalfantasyxiv.com/lodestone/topics/');
 		
 				console.log('UpdateTopics')
-				var elements = document.querySelectorAll('.news__content ul .ic__topics--list');
-				console.log(elements);
 		
 				var ListNewsTopics = await page.evaluate(()=>{
 		
 					var NewsTopics = { "title":[], "src":[], "file": [], "date": [], "text": []}
+					var elements = document.querySelectorAll('.news__content ul .ic__topics--list');
+		
 					for (let index = 0; index < 3; index++) {   
 						
 						NewsTopics["title"].push(elements[index].querySelector('.news__list--title a').textContent)
@@ -147,20 +147,20 @@ client.on('interactionCreate', async interaction => {
     ****************************************************/	
    
     async function updateNewsNotices(){
+        const puppeteer = require('puppeteer');
     
         (async () => {
         const browser = await puppeteer.launch({headless: true, executablePath: '/usr/bin/chromium-browser'}); 
- 
 
             const page = await browser.newPage();
             await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/1');
-			var elements = document.querySelectorAll('.news__content ul .news__list');
     
             console.log('Update Notice')
     
             var ListNewsNotices = await page.evaluate(()=>{
     
                 var NewsNotices = { "title":[], "src":[], "date": []}
+                var elements = document.querySelectorAll('.news__content ul .news__list');
     
                 for (let index = 4; index < 7; index++) {   
                     
@@ -235,20 +235,20 @@ client.on('interactionCreate', async interaction => {
 
 
     async function updateNewsMaintenance(){
+        const puppeteer = require('puppeteer');
     
         (async () => {
         const browser = await puppeteer.launch({headless: true, executablePath: '/usr/bin/chromium-browser'}); 
- 
 
             const page = await browser.newPage();
             await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/2');
     
             console.log('UpdateNews Maintenance')
-			var elements = document.querySelectorAll('.news__content ul .news__list');
     
             var ListNewsMaintenance = await page.evaluate(()=>{
     
                 var NewsMaintenance = { "title":[], "src":[], "date": []}
+                var elements = document.querySelectorAll('.news__content ul .news__list');
     
                 for (let index = 0; index < 3; index++) {   
                     
@@ -322,10 +322,10 @@ client.on('interactionCreate', async interaction => {
     ****************************************************/	
 
 	async function updateNewsUpdates(){
+		const puppeteer = require('puppeteer');
 	
 		(async () => {
 		const browser = await puppeteer.launch({headless: true, executablePath: '/usr/bin/chromium-browser'}); 
- 
 
 			const page = await browser.newPage();
 			await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/3');
@@ -333,9 +333,9 @@ client.on('interactionCreate', async interaction => {
 			console.log('Update Updates')
 	
 			var ListNewsUpdates = await page.evaluate(()=>{
-				var elements = document.querySelectorAll('.news__content ul .news__list');
 	
 				var NewsUpdates = { "title":[], "src":[], "date": []}
+				var elements = document.querySelectorAll('.news__content ul .news__list');
 	
 				for (let index = 4; index < 7; index++) {   
 					
@@ -409,20 +409,20 @@ client.on('interactionCreate', async interaction => {
     ****************************************************/	
 
 	async function updateNewsStatus(){
+		const puppeteer = require('puppeteer');
 	
 		(async () => {
 		const browser = await puppeteer.launch({headless: true, executablePath: '/usr/bin/chromium-browser'}); 
- 
 
 			const page = await browser.newPage();
 			await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/4');
-			var elements = document.querySelectorAll('.news__content ul .news__list');
 	
 			console.log('Update Status')
 	
 			var ListNewsStatus = await page.evaluate(()=>{
 	
 				var NewsStatus = { "title":[], "src":[], "date": []}
+				var elements = document.querySelectorAll('.news__content ul .news__list');
 	
 				for (let index = 4; index < 7; index++) {   
 					
@@ -500,20 +500,20 @@ client.on('interactionCreate', async interaction => {
     ****************************************************/	
 
 	async function updateNewsStatus(){
+		const puppeteer = require('puppeteer');
 	
 		(async () => {
 		const browser = await puppeteer.launch({headless: true, executablePath: '/usr/bin/chromium-browser'}); 
- 
 
 			const page = await browser.newPage();
 			await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/4');
-			var elements = document.querySelectorAll('.news__content ul .news__list');
 	
 			console.log('Update Status')
 	
 			var ListNewsStatus = await page.evaluate(()=>{
 	
 				var NewsStatus = { "title":[], "src":[], "date": []}
+				var elements = document.querySelectorAll('.news__content ul .news__list');
 	
 				for (let index = 4; index < 7; index++) {   
 					
@@ -592,22 +592,21 @@ client.on('interactionCreate', async interaction => {
 
 	async function updateNewsLOLPatch(){
 
-		 
+		const puppeteer = require('puppeteer');
 		
 			
 				(async () => {
 				const browser = await puppeteer.launch({headless: true, executablePath: '/usr/bin/chromium-browser'}); 
- 
 
 					const page = await browser.newPage();
 					await page.goto('https://www.leagueoflegends.com/fr-fr/news/tags/patch-notes/');
 			
 					console.log('Update Status')
-					var elements = document.querySelectorAll('.style__List-sc-106zuld-2 .style__Item-sc-106zuld-3');
 			
 					var ListNewPatch = await page.evaluate(()=>{
 			
 						var NewPatch = { "title":[], "src":[], "img": []}
+						var elements = document.querySelectorAll('.style__List-sc-106zuld-2 .style__Item-sc-106zuld-3');
 			
 						for (let index = 0; index < 3; index++) {   
 							
@@ -723,10 +722,10 @@ client.on('interactionCreate', async interaction => {
 		}
 
 	function UpdateCanvaZevent(){
+		const puppeteer = require('puppeteer');
 	
 		(async () => {
 		const browser = await puppeteer.launch({headless: true, executablePath: '/usr/bin/chromium-browser'}); 
- 
 
 			const page = await browser.newPage();
 			await page.goto('https://place.zevent.fr');
@@ -799,7 +798,7 @@ setInterval(function(){
 	setTimeout(function(){EnvoieZevent();}, 30000)
 
 
-}, 30000) //1200000
+}, 1200000) //1200000
 
 function WriteFiles(file, data){
 
