@@ -1,5 +1,4 @@
 // Require the necessary discord.js classes
-const moment = require('moment');
 const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, GatewayIntentBits, EmbedBuilder } = require('discord.js');
@@ -143,7 +142,7 @@ client.on('interactionCreate', async interaction => {
 			}	
 		
 	/****************************************************
-    *********** NEWS CHANNEL NOTICES UPDATE *************
+    ************ NEWS FFXIV NOTICES UPDATE **************
     ****************************************************/	
    
     async function updateNewsNotices(){
@@ -229,7 +228,7 @@ client.on('interactionCreate', async interaction => {
 			}	
 
 	/****************************************************
-    ********* NEWS CHANNEL MAINTENANCE UPDATE ***********
+    *********** NEWS FFXIV MAINTENANCE UPDATE ***********
     ****************************************************/	
 
 
@@ -316,7 +315,7 @@ client.on('interactionCreate', async interaction => {
 			}	
 
    /****************************************************
-    *********** NEWS CHANNEL UPDATES UPDATE ************
+    ************ NEWS FFXIV UPDATES UPDATE *************
     ****************************************************/	
 
 	async function updateNewsUpdates(){
@@ -402,7 +401,7 @@ client.on('interactionCreate', async interaction => {
 			}	
 
    /****************************************************
-    ************ NEWS STATUS Status UPDATE ************
+    ************* NEWS FFXIV STATUS UPDATE *************
     ****************************************************/	
 
 	async function updateNewsStatus(){
@@ -488,8 +487,195 @@ client.on('interactionCreate', async interaction => {
 			}	
 
 	/****************************************************
-    ************** END OF NEWS ALL UPDATE ***************
+    ************* END OF NEWS FFXIV UPDATE **************
     ****************************************************/	
+
+	/****************************************************
+    ************* NEWS FFXIV STATUS UPDATE *************
+    ****************************************************/	
+
+	async function updateNewsStatus(){
+		const puppeteer = require('puppeteer');
+	
+		(async () => {
+			const browser = await puppeteer.launch({headless: true}); 
+			const page = await browser.newPage();
+			await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/4');
+	
+			console.log('Update Status')
+	
+			var ListNewsStatus = await page.evaluate(()=>{
+	
+				var NewsStatus = { "title":[], "src":[], "date": []}
+				var elements = document.querySelectorAll('.news__content ul .news__list');
+	
+				for (let index = 4; index < 7; index++) {   
+					
+					NewsStatus["title"].push(elements[index].querySelector('.news__list--title').textContent)
+					NewsStatus["src"].push(elements[index].querySelector('.news__list a').href )
+					NewsStatus["date"].push(elements[index].querySelector('.news__list--time span').textContent )
+					
+				}
+				return NewsStatus 
+			});
+			
+			fs.writeFile('./scrap/NewsStatusUpdate.json', JSON.stringify(ListNewsStatus, null, 4), (err)=>{
+				if(err)
+				console.log(err);
+			})
+			
+			await browser.close();  
+	
+		})();
+	
+		return;
+	
+		}
+		
+	function EnvoieNotifNewsStatus(){
+			var listUpdate = JSON.parse(fs.readFileSync('./scrap/NewsStatusUpdate.json', 'utf-8'))
+			var listJson = JSON.parse(fs.readFileSync('./scrap/NewsStatus.json', 'utf-8'))
+			console.log(listJson["title"][0]);
+			console.log(listUpdate["title"][1]);
+				//si 1 video a été ajouté
+				if ( listJson["src"][0] === listUpdate["src"][1] && listJson["src"][1] === listUpdate["src"][2]) {
+					console.log('Nouvelle News Status');
+					
+					const frEmbed = new EmbedBuilder()
+						.setColor('#4096ee')
+						.setAuthor({ name: 'État', iconURL: 'https://img.finalfantasyxiv.com/lds/h/0/U2uGfVX4GdZgU1jASO0m9h_xLg.png' })
+						.setTitle(listUpdate["title"][0])
+						.setURL(listUpdate["src"][0])
+						.setTimestamp()
+	
+					client.channels.cache.get(channelNews).send({ embeds: [frEmbed] })
+		
+					WriteFiles('./scrap/NewsStatus.json', listUpdate);
+				}
+				//si 2 videos publiées
+				else if ( listJson["src"][0] == listUpdate["src"][2]) {
+					console.log('2 Nouvelle News Status');
+					
+					const frEmbed = new EmbedBuilder()
+						.setColor('#4096ee')
+						.setAuthor({ name: 'État', iconURL: 'https://img.finalfantasyxiv.com/lds/h/0/U2uGfVX4GdZgU1jASO0m9h_xLg.png' })
+						.setTitle(listUpdate["title"][0])
+						.setURL(listUpdate["src"][0])
+						.setTimestamp()
+	
+					client.channels.cache.get(channelNews).send({ embeds: [frEmbed] })
+	
+					WriteFiles('./scrap/NewsStatus.json', listUpdate);
+				}
+				else{
+					console.log('Pas de Nouvelle News Status');
+					WriteFiles('./scrap/NewsStatus.json', listUpdate);
+				}
+				
+				return null;
+		
+			}	
+
+	/****************************************************
+    ************* END OF NEWS FFXIV UPDATE **************
+    ****************************************************/
+   
+	/****************************************************
+    ***************** PATCH LOL UPDATE ******************
+    ****************************************************/
+
+	function updateNewsLOLPatch(){
+
+		const puppeteer = require('puppeteer');
+		const fs = require('node:fs');
+		console.log('Update Patch Lol')
+		
+			
+				(async () => {
+					const browser = await puppeteer.launch({headless: true}); 
+					const page = await browser.newPage();
+					await page.goto('https://www.leagueoflegends.com/fr-fr/news/tags/patch-notes/');
+			
+					console.log('Update Status')
+			
+					var ListNewPatch = await page.evaluate(()=>{
+			
+						var NewPatch = { "title":[], "src":[], "img": []}
+						var elements = document.querySelectorAll('.style__List-sc-106zuld-2 .style__Item-sc-106zuld-3');
+			
+						for (let index = 0; index < 3; index++) {   
+							
+							NewPatch["title"].push(elements[index].querySelector('.style__Title-sc-1h41bzo-8').textContent)
+							NewPatch["src"].push(elements[index].querySelector('.style__Wrapper-sc-1h41bzo-0').href )
+							NewPatch["img"].push(elements[index].querySelector('.style__ImageWrapper-sc-1h41bzo-5 img').src )
+		
+							
+						}
+						return NewPatch 
+					});
+					
+					fs.writeFile('./scrap/LolPatchUpdate.json', JSON.stringify(ListNewPatch, null, 4), (err)=>{
+						if(err)
+						console.log(err);
+					})
+					
+					await browser.close();  
+			
+				})();
+			
+				return;
+		
+		  }
+		
+		  function EnvoieNotifNewsLOLPatch(){
+			var listUpdate = JSON.parse(fs.readFileSync('./scrap/LolPatchUpdate.json', 'utf-8'))
+			var listJson = JSON.parse(fs.readFileSync('./scrap/LolPatch.json', 'utf-8'))
+			console.log(listJson["title"][0]);
+			console.log(listUpdate["title"][1]);
+			  //si 1 video a été ajouté
+			  if ( listJson["src"][0] === listUpdate["src"][1] && listJson["src"][1] === listUpdate["src"][2]) {
+				console.log('Nouveau Patch lol');
+				
+				const frEmbed = new EmbedBuilder()
+				  .setColor('#FFDC00')
+							.setAuthor({ name: 'Patch League of Legends', iconURL: 'https://www.leagueoflegends.com/static/logo-1200-589b3ef693ce8a750fa4b4704f1e61f2.png' })
+				  .setTitle(listUpdate["title"][0])
+				  .setURL(listUpdate["src"][0])
+				  .setThumbnail(listUpdate["img"][0])
+				  .setTimestamp()
+		
+				client.channels.cache.get(channelNews).send({ embeds: [frEmbed] })
+		  
+				WriteFiles('./scrap/LolPatch.json', listUpdate);
+			  }
+			  //si 2 videos publiées
+			  else if ( listJson["src"][0] == listUpdate["src"][2]) {
+				console.log('2 Nouveau Patch lol');
+				
+				const frEmbed = new EmbedBuilder()
+				  .setColor('#FFDC00')
+							.setAuthor({ name: 'Patch League of Legends', iconURL: 'https://www.leagueoflegends.com/static/logo-1200-589b3ef693ce8a750fa4b4704f1e61f2.png' })
+				  .setTitle(listUpdate["title"][0])
+				  .setURL(listUpdate["src"][0])
+				  .setThumbnail(listUpdate["img"][0])
+				  .setTimestamp()
+		
+				client.channels.cache.get(channelNews).send({ embeds: [frEmbed] })
+		
+				WriteFiles('./scrap/LolPatch.json', listUpdate);
+			  }
+			  else{
+				console.log('Pas de Nouveau patch lol');
+				WriteFiles('./scrap/LolPatch.jsonn', listUpdate);
+			  }
+			  
+			  return null;
+		  
+			}	
+
+	/****************************************************
+    ************** END OF PATCH LOL UPDATE **************
+    ****************************************************/
 
    /****************************************************
     ************* ZEVENT CHANNEL UPDATE ****************
@@ -549,7 +735,7 @@ client.on('interactionCreate', async interaction => {
 				deviceScaleFactor: 10
 			  });
 			const select = await page.waitForSelector("div.game-container__inner img:nth-child(2)")
-			await select.screenshot({path: "zeventcanva.png"})
+			await select.screenshot({path: "./assets/zeventcanva.png"})
 	
 				await browser.close();  
 	  
@@ -562,7 +748,7 @@ client.on('interactionCreate', async interaction => {
 		
 	function EnvoieZevent(){
 		const { AttachmentBuilder } = require('discord.js');
-		const file = new AttachmentBuilder('./zeventcanva.png');
+		const file = new AttachmentBuilder('./assets/zeventcanva.png');
 			var listZevent = fs.readFileSync('./scrap/ZeventStats.json', 'utf-8')
 					console.log(listZevent);
 					const strListZevent = listZevent.replace('{','').replace('}','').replace('StreamerEnLigne','Streamer En Ligne ').replace('ViwerEnLigne','Viwer En Ligne ').replace('TotalDon','Total De Don ').replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('[',"").replace(']',"").replace(',',"").replace(',',"")
@@ -591,17 +777,18 @@ setInterval(function(){
 	updateNewsMaintenance()
 	updateNewsUpdates()
 	updateNewsStatus()
-	UpdateZevent()
+	updateNewsLOLPatch()
 	UpdateCanvaZevent()
+	UpdateZevent()
 
-	var newDateObj = moment().format('LT').add(20, 'm').toDate();
-	console.log(newDateObj);
+	console.log('set timer');
 
 	setTimeout(function(){EnvoieNotifNewsTopic();}, 30000)
 	setTimeout(function(){EnvoieNotifNewsNotice();}, 30000)
 	setTimeout(function(){EnvoieNotifNewsMaintenance();}, 30000)
 	setTimeout(function(){EnvoieNotifNewsUpdates();}, 30000)
 	setTimeout(function(){EnvoieNotifNewsStatus();}, 30000)
+	setTimeout(function(){EnvoieNotifNewsLOLPatch();}, 30000)
 	setTimeout(function(){EnvoieZevent();}, 30000)
 
 
