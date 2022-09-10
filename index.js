@@ -57,19 +57,12 @@ client.on('interactionCreate', async interaction => {
 	async function updateNewsTopics(){
 
 			(async () => {
-			const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser', args:['--user-data-dir=/home/rut/.config/google-chrome/Profile 1']}); 
+			const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser'}); 
 
 				const page = await browser.newPage();
 				await page.goto('https://fr.finalfantasyxiv.com/lodestone/topics/');
-		
-				
-		
+				await page.waitForNavigation();		
 				var ListNewsTopics = await page.evaluate(()=>{
-					await page.evaluate(async() => {
-						await new Promise(function(resolve) { 
-							   setTimeout(resolve, 2000)
-						});
-					});
 					var NewsTopics = { "title":[], "src":[], "file": [], "date": [], "text": []}
 					var elements = document.querySelectorAll('.news__content ul .ic__topics--list');
 		
@@ -154,20 +147,16 @@ client.on('interactionCreate', async interaction => {
         
     
         (async () => {
-        const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser', args:['--user-data-dir=/home/rut/.config/google-chrome/Profile 1']}); 
+        const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser'}); 
 
             const page = await browser.newPage();
             await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/1'); 
+			await page.waitForNavigation();
     
             var ListNewsNotices = await page.evaluate(()=>{
     
                 var NewsNotices = { "title":[], "src":[], "date": []}
                 var elements = document.querySelectorAll('.news__content ul .news__list');
-				await page.evaluate(async() => {
-					await new Promise(function(resolve) { 
-						   setTimeout(resolve, 2000)
-					});
-				});
                 for (let index = 4; index < 7; index++) {   
                     
                     NewsNotices["title"].push(elements[index].querySelector('.news__list--title').textContent)
@@ -244,17 +233,13 @@ client.on('interactionCreate', async interaction => {
         
     
         (async () => {
-        const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser', args:['--user-data-dir=/home/rut/.config/google-chrome/Profile 1']}); 
+        const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser'}); 
 
             const page = await browser.newPage();
             await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/2');
+			await page.waitForNavigation();
     
             var ListNewsMaintenance = await page.evaluate(()=>{
-				await page.evaluate(async() => {
-					await new Promise(function(resolve) { 
-						   setTimeout(resolve, 2000)
-					});
-				});
                 var NewsMaintenance = { "title":[], "src":[], "date": []}
                 var elements = document.querySelectorAll('.news__content ul .news__list');
     
@@ -333,17 +318,13 @@ client.on('interactionCreate', async interaction => {
 		
 	
 		(async () => {
-		const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser', args:['--user-data-dir=/home/rut/.config/google-chrome/Profile 1']}); 
+		const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser'}); 
 
 			const page = await browser.newPage();
 			await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/3');
+			await page.waitForNavigation();
 				
 			var ListNewsUpdates = await page.evaluate(()=>{
-				await page.evaluate(async() => {
-					await new Promise(function(resolve) { 
-						   setTimeout(resolve, 2000)
-					});
-				});
 				var NewsUpdates = { "title":[], "src":[], "date": []}
 				var elements = document.querySelectorAll('.news__content ul .news__list');
 	
@@ -422,19 +403,13 @@ client.on('interactionCreate', async interaction => {
 		
 	
 		(async () => {
-		const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser', args:['--user-data-dir=/home/rut/.config/google-chrome/Profile 1']}); 
+		const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser'}); 
 
 			const page = await browser.newPage();
 			await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/4');
+			await page.waitForNavigation();
 				
 			var ListNewsStatus = await page.evaluate(()=>{
-	
-				await page.evaluate(async() => {
-					await new Promise(function(resolve) { 
-						   setTimeout(resolve, 2000)
-					});
-				});
-
 				var NewsStatus = { "title":[], "src":[], "date": []}
 				var elements = document.querySelectorAll('.news__content ul .news__list');
 	
@@ -516,16 +491,13 @@ client.on('interactionCreate', async interaction => {
 	async function updateNewsStatus(){
 	
 		(async () => {
-		const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser', args:['--user-data-dir=/home/rut/.config/google-chrome/Profile 1']}); 
+		const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser'}); 
 
 			const page = await browser.newPage();
 			await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/4');
+			await page.waitForNavigation();
+
 			var ListNewsStatus = await page.evaluate(()=>{
-				await page.evaluate(async() => {
-					await new Promise(function(resolve) { 
-						   setTimeout(resolve, 2000)
-					});
-				});
 				var NewsStatus = { "title":[], "src":[], "date": []}
 				var elements = document.querySelectorAll('.news__content ul .news__list');
 	
@@ -608,22 +580,14 @@ client.on('interactionCreate', async interaction => {
 
 		
 				(async () => {
-				const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser', args:['--user-data-dir=/home/rut/.config/google-chrome/Profile 1']}); 
+				const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser'}); 
 
 					const page = await browser.newPage();
 					await page.goto('https://www.leagueoflegends.com/fr-fr/news/tags/patch-notes/');
-					await page.evaluate(async() => {
-						await new Promise(function(resolve) { 
-							   setTimeout(resolve, 2000)
-						});
-					});
-			
+					
+					await page.waitForNavigation();
 					var ListNewPatch = await page.evaluate(()=>{
-						await page.evaluate(async() => {
-							await new Promise(function(resolve) { 
-								   setTimeout(resolve, 2000)
-							});
-						});
+						
 						var NewPatch = { "title":[], "src":[], "img": []}
 						var elements = document.querySelectorAll('.style__List-sc-106zuld-2 .style__Item-sc-106zuld-3');
 			
@@ -741,7 +705,7 @@ client.on('interactionCreate', async interaction => {
 	function UpdateCanvaZevent(){
 	
 		(async () => {
-		const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser', args:['--user-data-dir=/home/rut/.config/google-chrome/Profile 1']}); 
+		const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser'}); 
 
 			const page = await browser.newPage();
 			await page.goto('https://place.zevent.fr');
