@@ -57,7 +57,8 @@ client.on('interactionCreate', async interaction => {
 		const puppeteer = require('puppeteer');
 		
 			(async () => {
-				const browser = await puppeteer.launch({headless: true}); 
+				const browser = await puppeteer.launch({headless: true, executablePath: '/usr/bin/chromium-browser'}); 
+
 				const page = await browser.newPage();
 				await page.goto('https://fr.finalfantasyxiv.com/lodestone/topics/');
 		
@@ -149,7 +150,8 @@ client.on('interactionCreate', async interaction => {
         const puppeteer = require('puppeteer');
     
         (async () => {
-            const browser = await puppeteer.launch({headless: true}); 
+            const browser = await puppeteer.launch({headless: true, executablePath: '/usr/bin/chromium-browser'}); 
+
             const page = await browser.newPage();
             await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/1');
     
@@ -236,7 +238,8 @@ client.on('interactionCreate', async interaction => {
         const puppeteer = require('puppeteer');
     
         (async () => {
-            const browser = await puppeteer.launch({headless: true}); 
+            const browser = await puppeteer.launch({headless: true, executablePath: '/usr/bin/chromium-browser'}); 
+
             const page = await browser.newPage();
             await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/2');
     
@@ -322,7 +325,8 @@ client.on('interactionCreate', async interaction => {
 		const puppeteer = require('puppeteer');
 	
 		(async () => {
-			const browser = await puppeteer.launch({headless: true}); 
+			const browser = await puppeteer.launch({headless: true, executablePath: '/usr/bin/chromium-browser'}); 
+
 			const page = await browser.newPage();
 			await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/3');
 	
@@ -408,7 +412,8 @@ client.on('interactionCreate', async interaction => {
 		const puppeteer = require('puppeteer');
 	
 		(async () => {
-			const browser = await puppeteer.launch({headless: true}); 
+			const browser = await puppeteer.launch({headless: true, executablePath: '/usr/bin/chromium-browser'}); 
+
 			const page = await browser.newPage();
 			await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/4');
 	
@@ -498,7 +503,8 @@ client.on('interactionCreate', async interaction => {
 		const puppeteer = require('puppeteer');
 	
 		(async () => {
-			const browser = await puppeteer.launch({headless: true}); 
+			const browser = await puppeteer.launch({headless: true, executablePath: '/usr/bin/chromium-browser'}); 
+
 			const page = await browser.newPage();
 			await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/4');
 	
@@ -587,12 +593,11 @@ client.on('interactionCreate', async interaction => {
 	function updateNewsLOLPatch(){
 
 		const puppeteer = require('puppeteer');
-		const fs = require('node:fs');
-		console.log('Update Patch Lol')
 		
 			
 				(async () => {
-					const browser = await puppeteer.launch({headless: true}); 
+					const browser = await puppeteer.launch({headless: true, executablePath: '/usr/bin/chromium-browser'}); 
+
 					const page = await browser.newPage();
 					await page.goto('https://www.leagueoflegends.com/fr-fr/news/tags/patch-notes/');
 			
@@ -720,7 +725,8 @@ client.on('interactionCreate', async interaction => {
 		const puppeteer = require('puppeteer');
 	
 		(async () => {
-			const browser = await puppeteer.launch({headless: true}); 
+			const browser = await puppeteer.launch({headless: true, executablePath: '/usr/bin/chromium-browser'}); 
+
 			const page = await browser.newPage();
 			await page.goto('https://place.zevent.fr');
 			page.click('.board-state')
@@ -792,7 +798,7 @@ setInterval(function(){
 	setTimeout(function(){EnvoieZevent();}, 30000)
 
 
-}, 1200000) //1200000
+}, 30000) //1200000
 
 function WriteFiles(file, data){
 
