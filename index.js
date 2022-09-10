@@ -1,19 +1,19 @@
 // Require the necessary discord.js classes
-const fs = require('node:fs');
-const path = require('node:path');
-const { Client, Collection, GatewayIntentBits, EmbedBuilder } = require('discord.js');
-const { token, channelNews, ZeventNews } = require('./config.json');
+import { readdirSync, writeFile, readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import { Client, Collection, GatewayIntentBits, EmbedBuilder } from 'discord.js';
+import { token, channelNews, ZeventNews } from './config.json';
 
 
 
 // Create a new client instance
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
-const eventsPath = path.join(__dirname, 'events');
-const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));
+const eventsPath = join(__dirname, 'events');
+const eventFiles = readdirSync(eventsPath).filter(file => file.endsWith('.js'));
 
 for (const file of eventFiles) {
-	const filePath = path.join(eventsPath, file);
+	const filePath = join(eventsPath, file);
 	const event = require(filePath);
 	if (event.once) {
 		client.once(event.name, (...args) => event.execute(...args));
@@ -23,11 +23,11 @@ for (const file of eventFiles) {
 }
 
 client.commands = new Collection();
-const commandsPath = path.join(__dirname, 'commands');
-const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
+const commandsPath = join(__dirname, 'commands');
+const commandFiles = readdirSync(commandsPath).filter(file => file.endsWith('.js'));
 
 for (const file of commandFiles) {
-	const filePath = path.join(commandsPath, file);
+	const filePath = join(commandsPath, file);
 	const command = require(filePath);
 	// Set a new item in the Collection
 	// With the key as the command name and the value as the exported module
@@ -81,7 +81,7 @@ client.on('interactionCreate', async interaction => {
 					return NewsTopics 
 				});
 				
-				fs.writeFile('./scrap/NewsTopicsUpdate.json', JSON.stringify(ListNewsTopics, null, 4), (err)=>{
+				writeFile('./scrap/NewsTopicsUpdate.json', JSON.stringify(ListNewsTopics, null, 4), (err)=>{
 					if(err)
 					console.log(err);
 				})
@@ -95,8 +95,8 @@ client.on('interactionCreate', async interaction => {
 		}
 		
 	function EnvoieNotifNewsTopic(){
-			var listUpdate = JSON.parse(fs.readFileSync('./scrap/NewsTopicsUpdate.json', 'utf-8'))
-			var listJson = JSON.parse(fs.readFileSync('./scrap/NewsTopics.json', 'utf-8'))
+			var listUpdate = JSON.parse(readFileSync('./scrap/NewsTopicsUpdate.json', 'utf-8'))
+			var listJson = JSON.parse(readFileSync('./scrap/NewsTopics.json', 'utf-8'))
 			console.log(listJson["title"][0]);
 			console.log(listUpdate["title"][1]);
 				//si 1 video a été ajouté
@@ -172,7 +172,7 @@ client.on('interactionCreate', async interaction => {
                 return NewsNotices 
             });
             
-            fs.writeFile('./scrap/NewsNoticesUpdate.json', JSON.stringify(ListNewsNotices, null, 4), (err)=>{
+            writeFile('./scrap/NewsNoticesUpdate.json', JSON.stringify(ListNewsNotices, null, 4), (err)=>{
                 if(err)
                 console.log(err);
             })
@@ -186,8 +186,8 @@ client.on('interactionCreate', async interaction => {
 		}
 		
 	function EnvoieNotifNewsNotice(){
-			var listUpdate = JSON.parse(fs.readFileSync('./scrap/NewsNoticesUpdate.json', 'utf-8'))
-			var listJson = JSON.parse(fs.readFileSync('./scrap/NewsNotices.json', 'utf-8'))
+			var listUpdate = JSON.parse(readFileSync('./scrap/NewsNoticesUpdate.json', 'utf-8'))
+			var listJson = JSON.parse(readFileSync('./scrap/NewsNotices.json', 'utf-8'))
 			console.log(listJson["title"][0]);
 			console.log(listUpdate["title"][1]);
 				//si 1 video a été ajouté
@@ -260,7 +260,7 @@ client.on('interactionCreate', async interaction => {
                 return NewsMaintenance 
             });
             
-            fs.writeFile('./scrap/NewsMaintenanceUpdate.json', JSON.stringify(ListNewsMaintenance, null, 4), (err)=>{
+            writeFile('./scrap/NewsMaintenanceUpdate.json', JSON.stringify(ListNewsMaintenance, null, 4), (err)=>{
                 if(err)
                 console.log(err);
             })
@@ -274,8 +274,8 @@ client.on('interactionCreate', async interaction => {
 		}
 		
 	function EnvoieNotifNewsMaintenance(){
-			var listUpdate = JSON.parse(fs.readFileSync('./scrap/NewsMaintenanceUpdate.json', 'utf-8'))
-			var listJson = JSON.parse(fs.readFileSync('./scrap/NewsMaintenance.json', 'utf-8'))
+			var listUpdate = JSON.parse(readFileSync('./scrap/NewsMaintenanceUpdate.json', 'utf-8'))
+			var listJson = JSON.parse(readFileSync('./scrap/NewsMaintenance.json', 'utf-8'))
 			console.log(listJson["title"][0]);
 			console.log(listUpdate["title"][1]);
 				//si 1 video a été ajouté
@@ -347,7 +347,7 @@ client.on('interactionCreate', async interaction => {
 				return NewsUpdates 
 			});
 			
-			fs.writeFile('./scrap/NewsUpdatesUpdate.json', JSON.stringify(ListNewsUpdates, null, 4), (err)=>{
+			writeFile('./scrap/NewsUpdatesUpdate.json', JSON.stringify(ListNewsUpdates, null, 4), (err)=>{
 				if(err)
 				console.log(err);
 			})
@@ -361,8 +361,8 @@ client.on('interactionCreate', async interaction => {
 		}
 		
 	function EnvoieNotifNewsUpdates(){
-			var listUpdate = JSON.parse(fs.readFileSync('./scrap/NewsUpdatesUpdate.json', 'utf-8'))
-			var listJson = JSON.parse(fs.readFileSync('./scrap/NewsUpdates.json', 'utf-8'))
+			var listUpdate = JSON.parse(readFileSync('./scrap/NewsUpdatesUpdate.json', 'utf-8'))
+			var listJson = JSON.parse(readFileSync('./scrap/NewsUpdates.json', 'utf-8'))
 			console.log(listJson["title"][0]);
 			console.log(listUpdate["title"][1]);
 				//si 1 video a été ajouté
@@ -434,7 +434,7 @@ client.on('interactionCreate', async interaction => {
 				return NewsStatus 
 			});
 			
-			fs.writeFile('./scrap/NewsStatusUpdate.json', JSON.stringify(ListNewsStatus, null, 4), (err)=>{
+			writeFile('./scrap/NewsStatusUpdate.json', JSON.stringify(ListNewsStatus, null, 4), (err)=>{
 				if(err)
 				console.log(err);
 			})
@@ -448,8 +448,8 @@ client.on('interactionCreate', async interaction => {
 		}
 		
 	function EnvoieNotifNewsStatus(){
-			var listUpdate = JSON.parse(fs.readFileSync('./scrap/NewsStatusUpdate.json', 'utf-8'))
-			var listJson = JSON.parse(fs.readFileSync('./scrap/NewsStatus.json', 'utf-8'))
+			var listUpdate = JSON.parse(readFileSync('./scrap/NewsStatusUpdate.json', 'utf-8'))
+			var listJson = JSON.parse(readFileSync('./scrap/NewsStatus.json', 'utf-8'))
 			console.log(listJson["title"][0]);
 			console.log(listUpdate["title"][1]);
 				//si 1 video a été ajouté
@@ -525,7 +525,7 @@ client.on('interactionCreate', async interaction => {
 				return NewsStatus 
 			});
 			
-			fs.writeFile('./scrap/NewsStatusUpdate.json', JSON.stringify(ListNewsStatus, null, 4), (err)=>{
+			writeFile('./scrap/NewsStatusUpdate.json', JSON.stringify(ListNewsStatus, null, 4), (err)=>{
 				if(err)
 				console.log(err);
 			})
@@ -539,8 +539,8 @@ client.on('interactionCreate', async interaction => {
 		}
 		
 	function EnvoieNotifNewsStatus(){
-			var listUpdate = JSON.parse(fs.readFileSync('./scrap/NewsStatusUpdate.json', 'utf-8'))
-			var listJson = JSON.parse(fs.readFileSync('./scrap/NewsStatus.json', 'utf-8'))
+			var listUpdate = JSON.parse(readFileSync('./scrap/NewsStatusUpdate.json', 'utf-8'))
+			var listJson = JSON.parse(readFileSync('./scrap/NewsStatus.json', 'utf-8'))
 			console.log(listJson["title"][0]);
 			console.log(listUpdate["title"][1]);
 				//si 1 video a été ajouté
@@ -619,7 +619,7 @@ client.on('interactionCreate', async interaction => {
 						return NewPatch 
 					});
 					
-					fs.writeFile('./scrap/LolPatchUpdate.json', JSON.stringify(ListNewPatch, null, 4), (err)=>{
+					writeFile('./scrap/LolPatchUpdate.json', JSON.stringify(ListNewPatch, null, 4), (err)=>{
 						if(err)
 						console.log(err);
 					})
@@ -633,8 +633,8 @@ client.on('interactionCreate', async interaction => {
 		  }
 		
 		  function EnvoieNotifNewsLOLPatch(){
-			var listUpdate = JSON.parse(fs.readFileSync('./scrap/LolPatchUpdate.json', 'utf-8'))
-			var listJson = JSON.parse(fs.readFileSync('./scrap/LolPatch.json', 'utf-8'))
+			var listUpdate = JSON.parse(readFileSync('./scrap/LolPatchUpdate.json', 'utf-8'))
+			var listJson = JSON.parse(readFileSync('./scrap/LolPatch.json', 'utf-8'))
 			console.log(listJson["title"][0]);
 			console.log(listUpdate["title"][1]);
 			  //si 1 video a été ajouté
@@ -755,7 +755,7 @@ client.on('interactionCreate', async interaction => {
 	function EnvoieZevent(){
 		const { AttachmentBuilder } = require('discord.js');
 		const file = new AttachmentBuilder('./assets/zeventcanva.png');
-			var listZevent = fs.readFileSync('./scrap/ZeventStats.json', 'utf-8')
+			var listZevent = readFileSync('./scrap/ZeventStats.json', 'utf-8')
 					console.log(listZevent);
 					const strListZevent = listZevent.replace('{','').replace('}','').replace('StreamerEnLigne','Streamer En Ligne ').replace('ViwerEnLigne','Viwer En Ligne ').replace('TotalDon','Total De Don ').replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('[',"").replace(']',"").replace(',',"").replace(',',"")
 					const frEmbed = new EmbedBuilder()
@@ -802,7 +802,7 @@ setInterval(function(){
 
 function WriteFiles(file, data){
 
-fs.writeFile(file, JSON.stringify(data, null, 4), (err)=>{
+	writeFile(file, JSON.stringify(data, null, 4), (err)=>{
 if(err)
 console.log(err)
 })
