@@ -783,7 +783,7 @@ setInterval(function(){
 	updateNewsMaintenance()
 	updateNewsUpdates()
 	updateNewsStatus()
-	updateNewsLOLPatch()
+	// updateNewsLOLPatch()
 	UpdateCanvaZevent()
 	UpdateZevent()
 
@@ -794,7 +794,7 @@ setInterval(function(){
 	setTimeout(function(){EnvoieNotifNewsMaintenance();}, 30000)
 	setTimeout(function(){EnvoieNotifNewsUpdates();}, 30000)
 	setTimeout(function(){EnvoieNotifNewsStatus();}, 30000)
-	setTimeout(function(){EnvoieNotifNewsLOLPatch();}, 30000)
+	// setTimeout(function(){EnvoieNotifNewsLOLPatch();}, 30000)
 	setTimeout(function(){EnvoieZevent();}, 30000)
 
 
