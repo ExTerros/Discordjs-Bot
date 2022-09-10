@@ -769,16 +769,16 @@ setInterval(function(){
 
 	console.log('set timer');
 
-	setTimeout(function(){EnvoieNotifNewsTopic();}, 30000)
-	setTimeout(function(){EnvoieNotifNewsNotice();}, 30000)
-	setTimeout(function(){EnvoieNotifNewsMaintenance();}, 30000)
-	setTimeout(function(){EnvoieNotifNewsUpdates();}, 30000)
-	setTimeout(function(){EnvoieNotifNewsStatus();}, 30000)
-	setTimeout(function(){EnvoieNotifNewsLOLPatch();}, 30000)
-	setTimeout(function(){EnvoieZevent();}, 30000)
+	setTimeout(function(){EnvoieNotifNewsTopic();}, 50000)
+	setTimeout(function(){EnvoieNotifNewsNotice();}, 50000)
+	setTimeout(function(){EnvoieNotifNewsMaintenance();}, 50000)
+	setTimeout(function(){EnvoieNotifNewsUpdates();}, 50000)
+	setTimeout(function(){EnvoieNotifNewsStatus();}, 50000)
+	setTimeout(function(){EnvoieNotifNewsLOLPatch();}, 50000)
+	setTimeout(function(){EnvoieZevent();}, 50000)
 
 
-}, 30000) //1200000
+}, 80000) //1200000
 
 function WriteFiles(file, data){
 
