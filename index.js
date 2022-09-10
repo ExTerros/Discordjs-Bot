@@ -1,6 +1,7 @@
 // Require the necessary discord.js classes
 const fs = require('node:fs');
 const path = require('node:path');
+const puppeteer = require('puppeteer');
 const { Client, Collection, GatewayIntentBits, EmbedBuilder } = require('discord.js');
 const { token, channelNews, ZeventNews } = require('./config.json');
 
@@ -54,7 +55,6 @@ client.on('interactionCreate', async interaction => {
     ****************************************************/	
 
 	async function updateNewsTopics(){
-	const puppeteer = require('puppeteer');
 
 			(async () => {
 			const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser', args:['--user-data-dir=/home/rut/.config/google-chrome/Profile 1']}); 
@@ -62,8 +62,7 @@ client.on('interactionCreate', async interaction => {
 				const page = await browser.newPage();
 				await page.goto('https://fr.finalfantasyxiv.com/lodestone/topics/');
 		
-				console.log('UpdateTopics')
-				await page.waitForNavigation();
+				
 		
 				var ListNewsTopics = await page.evaluate(()=>{
 		
@@ -148,16 +147,19 @@ client.on('interactionCreate', async interaction => {
     ****************************************************/	
    
     async function updateNewsNotices(){
-        const puppeteer = require('puppeteer');
+        
     
         (async () => {
         const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser', args:['--user-data-dir=/home/rut/.config/google-chrome/Profile 1']}); 
 
             const page = await browser.newPage();
             await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/1');
-			await page.waitForNavigation();
+			await page.evaluate(async() => {
+				await new Promise(function(resolve) { 
+					   setTimeout(resolve, 2000)
+				});
+			});
     
-            console.log('Update Notice')
     
             var ListNewsNotices = await page.evaluate(()=>{
     
@@ -237,7 +239,7 @@ client.on('interactionCreate', async interaction => {
 
 
     async function updateNewsMaintenance(){
-        const puppeteer = require('puppeteer');
+        
     
         (async () => {
         const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser', args:['--user-data-dir=/home/rut/.config/google-chrome/Profile 1']}); 
@@ -246,7 +248,6 @@ client.on('interactionCreate', async interaction => {
             await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/2');
 			await page.waitForNavigation();
     
-            console.log('UpdateNews Maintenance')
     
             var ListNewsMaintenance = await page.evaluate(()=>{
     
@@ -325,7 +326,7 @@ client.on('interactionCreate', async interaction => {
     ****************************************************/	
 
 	async function updateNewsUpdates(){
-		const puppeteer = require('puppeteer');
+		
 	
 		(async () => {
 		const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser', args:['--user-data-dir=/home/rut/.config/google-chrome/Profile 1']}); 
@@ -334,7 +335,6 @@ client.on('interactionCreate', async interaction => {
 			await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/3');
 			await page.waitForNavigation();
 	
-			console.log('Update Updates')
 	
 			var ListNewsUpdates = await page.evaluate(()=>{
 	
@@ -413,7 +413,7 @@ client.on('interactionCreate', async interaction => {
     ****************************************************/	
 
 	async function updateNewsStatus(){
-		const puppeteer = require('puppeteer');
+		
 	
 		(async () => {
 		const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser', args:['--user-data-dir=/home/rut/.config/google-chrome/Profile 1']}); 
@@ -422,7 +422,6 @@ client.on('interactionCreate', async interaction => {
 			await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/4');
 			await page.waitForNavigation();
 	
-			console.log('Update Status')
 	
 			var ListNewsStatus = await page.evaluate(()=>{
 	
@@ -505,7 +504,6 @@ client.on('interactionCreate', async interaction => {
     ****************************************************/	
 
 	async function updateNewsStatus(){
-		const puppeteer = require('puppeteer');
 	
 		(async () => {
 		const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser', args:['--user-data-dir=/home/rut/.config/google-chrome/Profile 1']}); 
@@ -514,7 +512,6 @@ client.on('interactionCreate', async interaction => {
 			await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/4');
 			await page.waitForNavigation();
 	
-			console.log('Update Status')
 	
 			var ListNewsStatus = await page.evaluate(()=>{
 	
@@ -598,16 +595,13 @@ client.on('interactionCreate', async interaction => {
 
 	async function updateNewsLOLPatch(){
 
-		const puppeteer = require('puppeteer');
 		
-			
 				(async () => {
 				const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser', args:['--user-data-dir=/home/rut/.config/google-chrome/Profile 1']}); 
 
 					const page = await browser.newPage();
 					await page.goto('https://www.leagueoflegends.com/fr-fr/news/tags/patch-notes/');
 			
-					console.log('Update Status')
 			
 					var ListNewPatch = await page.evaluate(()=>{
 			
@@ -693,9 +687,7 @@ client.on('interactionCreate', async interaction => {
     ****************************************************/	
    
     async function UpdateZevent(){
-		const fs = require('node:fs');
 		const zapi = require('zevent-api');
-		console.log('Update Zevent');
 
 		zapi.viewersCount((viwers) => {
 		zapi.donnationAmount((amount) => {
@@ -728,7 +720,6 @@ client.on('interactionCreate', async interaction => {
 		}
 
 	function UpdateCanvaZevent(){
-		const puppeteer = require('puppeteer');
 	
 		(async () => {
 		const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser', args:['--user-data-dir=/home/rut/.config/google-chrome/Profile 1']}); 
