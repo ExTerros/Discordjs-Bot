@@ -63,12 +63,12 @@ client.on('interactionCreate', async interaction => {
 				await page.goto('https://fr.finalfantasyxiv.com/lodestone/topics/');
 		
 				console.log('UpdateTopics')
+				var elements = document.querySelectorAll('.news__content ul .ic__topics--list');
+				console.log(elements);
 		
 				var ListNewsTopics = await page.evaluate(()=>{
 		
 					var NewsTopics = { "title":[], "src":[], "file": [], "date": [], "text": []}
-					var elements = document.querySelectorAll('.news__content ul .ic__topics--list');
-					console.log(elements);
 					for (let index = 0; index < 3; index++) {   
 						
 						NewsTopics["title"].push(elements[index].querySelector('.news__list--title a').textContent)
@@ -154,13 +154,13 @@ client.on('interactionCreate', async interaction => {
 
             const page = await browser.newPage();
             await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/1');
+			var elements = document.querySelectorAll('.news__content ul .news__list');
     
             console.log('Update Notice')
     
             var ListNewsNotices = await page.evaluate(()=>{
     
                 var NewsNotices = { "title":[], "src":[], "date": []}
-                var elements = document.querySelectorAll('.news__content ul .news__list');
     
                 for (let index = 4; index < 7; index++) {   
                     
@@ -244,11 +244,11 @@ client.on('interactionCreate', async interaction => {
             await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/2');
     
             console.log('UpdateNews Maintenance')
+			var elements = document.querySelectorAll('.news__content ul .news__list');
     
             var ListNewsMaintenance = await page.evaluate(()=>{
     
                 var NewsMaintenance = { "title":[], "src":[], "date": []}
-                var elements = document.querySelectorAll('.news__content ul .news__list');
     
                 for (let index = 0; index < 3; index++) {   
                     
@@ -333,9 +333,9 @@ client.on('interactionCreate', async interaction => {
 			console.log('Update Updates')
 	
 			var ListNewsUpdates = await page.evaluate(()=>{
+				var elements = document.querySelectorAll('.news__content ul .news__list');
 	
 				var NewsUpdates = { "title":[], "src":[], "date": []}
-				var elements = document.querySelectorAll('.news__content ul .news__list');
 	
 				for (let index = 4; index < 7; index++) {   
 					
@@ -416,13 +416,13 @@ client.on('interactionCreate', async interaction => {
 
 			const page = await browser.newPage();
 			await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/4');
+			var elements = document.querySelectorAll('.news__content ul .news__list');
 	
 			console.log('Update Status')
 	
 			var ListNewsStatus = await page.evaluate(()=>{
 	
 				var NewsStatus = { "title":[], "src":[], "date": []}
-				var elements = document.querySelectorAll('.news__content ul .news__list');
 	
 				for (let index = 4; index < 7; index++) {   
 					
@@ -507,13 +507,13 @@ client.on('interactionCreate', async interaction => {
 
 			const page = await browser.newPage();
 			await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/4');
+			var elements = document.querySelectorAll('.news__content ul .news__list');
 	
 			console.log('Update Status')
 	
 			var ListNewsStatus = await page.evaluate(()=>{
 	
 				var NewsStatus = { "title":[], "src":[], "date": []}
-				var elements = document.querySelectorAll('.news__content ul .news__list');
 	
 				for (let index = 4; index < 7; index++) {   
 					
@@ -590,94 +590,94 @@ client.on('interactionCreate', async interaction => {
     ***************** PATCH LOL UPDATE ******************
     ****************************************************/
 
-	// async function updateNewsLOLPatch(){
+	async function updateNewsLOLPatch(){
 
-	// 	 
+		 
 		
 			
-	// 			(async () => {
-	// 			const browser = await puppeteer.launch({headless: true, executablePath: '/usr/bin/chromium-browser'}); 
+				(async () => {
+				const browser = await puppeteer.launch({headless: true, executablePath: '/usr/bin/chromium-browser'}); 
  
 
-	// 				const page = await browser.newPage();
-	// 				await page.goto('https://www.leagueoflegends.com/fr-fr/news/tags/patch-notes/');
+					const page = await browser.newPage();
+					await page.goto('https://www.leagueoflegends.com/fr-fr/news/tags/patch-notes/');
 			
-	// 				console.log('Update Status')
+					console.log('Update Status')
+					var elements = document.querySelectorAll('.style__List-sc-106zuld-2 .style__Item-sc-106zuld-3');
 			
-	// 				var ListNewPatch = await page.evaluate(()=>{
+					var ListNewPatch = await page.evaluate(()=>{
 			
-	// 					var NewPatch = { "title":[], "src":[], "img": []}
-	// 					var elements = document.querySelectorAll('.style__List-sc-106zuld-2 .style__Item-sc-106zuld-3');
+						var NewPatch = { "title":[], "src":[], "img": []}
 			
-	// 					for (let index = 0; index < 3; index++) {   
+						for (let index = 0; index < 3; index++) {   
 							
-	// 						NewPatch["title"].push(elements[index].querySelector('.style__Title-sc-1h41bzo-8').textContent)
-	// 						NewPatch["src"].push(elements[index].querySelector('.style__Wrapper-sc-1h41bzo-0').href )
-	// 						NewPatch["img"].push(elements[index].querySelector('.style__ImageWrapper-sc-1h41bzo-5 img').src )
+							NewPatch["title"].push(elements[index].querySelector('.style__Title-sc-1h41bzo-8').textContent)
+							NewPatch["src"].push(elements[index].querySelector('.style__Wrapper-sc-1h41bzo-0').href )
+							NewPatch["img"].push(elements[index].querySelector('.style__ImageWrapper-sc-1h41bzo-5 img').src )
 		
 							
-	// 					}
-	// 					return NewPatch 
-	// 				});
+						}
+						return NewPatch 
+					});
 					
-	// 				fs.writeFile('./scrap/LolPatchUpdate.json', JSON.stringify(ListNewPatch, null, 4), (err)=>{
-	// 					if(err)
-	// 					console.log(err);
-	// 				})
+					fs.writeFile('./scrap/LolPatchUpdate.json', JSON.stringify(ListNewPatch, null, 4), (err)=>{
+						if(err)
+						console.log(err);
+					})
 					
-	// 				await browser.close();  
+					await browser.close();  
 			
-	// 			})();
+				})();
 			
-	// 			return;
+				return;
 		
-	// 	  }
+		  }
 		
-	// 	  function EnvoieNotifNewsLOLPatch(){
-	// 		var listUpdate = JSON.parse(fs.readFileSync('./scrap/LolPatchUpdate.json', 'utf-8'))
-	// 		var listJson = JSON.parse(fs.readFileSync('./scrap/LolPatch.json', 'utf-8'))
-	// 		console.log(listJson["title"][0]);
-	// 		console.log(listUpdate["title"][1]);
-	// 		  //si 1 video a été ajouté
-	// 		  if ( listJson["src"][0] === listUpdate["src"][1] && listJson["src"][1] === listUpdate["src"][2]) {
-	// 			console.log('Nouveau Patch lol');
+		  function EnvoieNotifNewsLOLPatch(){
+			var listUpdate = JSON.parse(fs.readFileSync('./scrap/LolPatchUpdate.json', 'utf-8'))
+			var listJson = JSON.parse(fs.readFileSync('./scrap/LolPatch.json', 'utf-8'))
+			console.log(listJson["title"][0]);
+			console.log(listUpdate["title"][1]);
+			  //si 1 video a été ajouté
+			  if ( listJson["src"][0] === listUpdate["src"][1] && listJson["src"][1] === listUpdate["src"][2]) {
+				console.log('Nouveau Patch lol');
 				
-	// 			const frEmbed = new EmbedBuilder()
-	// 			  .setColor('#FFDC00')
-	// 						.setAuthor({ name: 'Patch League of Legends', iconURL: 'https://www.leagueoflegends.com/static/logo-1200-589b3ef693ce8a750fa4b4704f1e61f2.png' })
-	// 			  .setTitle(listUpdate["title"][0])
-	// 			  .setURL(listUpdate["src"][0])
-	// 			  .setThumbnail(listUpdate["img"][0])
-	// 			  .setTimestamp()
+				const frEmbed = new EmbedBuilder()
+				  .setColor('#FFDC00')
+							.setAuthor({ name: 'Patch League of Legends', iconURL: 'https://www.leagueoflegends.com/static/logo-1200-589b3ef693ce8a750fa4b4704f1e61f2.png' })
+				  .setTitle(listUpdate["title"][0])
+				  .setURL(listUpdate["src"][0])
+				  .setThumbnail(listUpdate["img"][0])
+				  .setTimestamp()
 		
-	// 			client.channels.cache.get(channelNews).send({ embeds: [frEmbed] })
+				client.channels.cache.get(channelNews).send({ embeds: [frEmbed] })
 		  
-	// 			WriteFiles('./scrap/LolPatch.json', listUpdate);
-	// 		  }
-	// 		  //si 2 videos publiées
-	// 		  else if ( listJson["src"][0] == listUpdate["src"][2]) {
-	// 			console.log('2 Nouveau Patch lol');
+				WriteFiles('./scrap/LolPatch.json', listUpdate);
+			  }
+			  //si 2 videos publiées
+			  else if ( listJson["src"][0] == listUpdate["src"][2]) {
+				console.log('2 Nouveau Patch lol');
 				
-	// 			const frEmbed = new EmbedBuilder()
-	// 			  .setColor('#FFDC00')
-	// 						.setAuthor({ name: 'Patch League of Legends', iconURL: 'https://www.leagueoflegends.com/static/logo-1200-589b3ef693ce8a750fa4b4704f1e61f2.png' })
-	// 			  .setTitle(listUpdate["title"][0])
-	// 			  .setURL(listUpdate["src"][0])
-	// 			  .setThumbnail(listUpdate["img"][0])
-	// 			  .setTimestamp()
+				const frEmbed = new EmbedBuilder()
+				  .setColor('#FFDC00')
+							.setAuthor({ name: 'Patch League of Legends', iconURL: 'https://www.leagueoflegends.com/static/logo-1200-589b3ef693ce8a750fa4b4704f1e61f2.png' })
+				  .setTitle(listUpdate["title"][0])
+				  .setURL(listUpdate["src"][0])
+				  .setThumbnail(listUpdate["img"][0])
+				  .setTimestamp()
 		
-	// 			client.channels.cache.get(channelNews).send({ embeds: [frEmbed] })
+				client.channels.cache.get(channelNews).send({ embeds: [frEmbed] })
 		
-	// 			WriteFiles('./scrap/LolPatch.json', listUpdate);
-	// 		  }
-	// 		  else{
-	// 			console.log('Pas de Nouveau patch lol');
-	// 			WriteFiles('./scrap/LolPatch.jsonn', listUpdate);
-	// 		  }
+				WriteFiles('./scrap/LolPatch.json', listUpdate);
+			  }
+			  else{
+				console.log('Pas de Nouveau patch lol');
+				WriteFiles('./scrap/LolPatch.jsonn', listUpdate);
+			  }
 			  
-	// 		  return null;
+			  return null;
 		  
-	// 		}	
+			}	
 
 	/****************************************************
     ************** END OF PATCH LOL UPDATE **************
@@ -784,7 +784,7 @@ setInterval(function(){
 	updateNewsMaintenance()
 	updateNewsUpdates()
 	updateNewsStatus()
-	// updateNewsLOLPatch()
+	updateNewsLOLPatch()
 	UpdateCanvaZevent()
 	UpdateZevent()
 
@@ -795,7 +795,7 @@ setInterval(function(){
 	setTimeout(function(){EnvoieNotifNewsMaintenance();}, 30000)
 	setTimeout(function(){EnvoieNotifNewsUpdates();}, 30000)
 	setTimeout(function(){EnvoieNotifNewsStatus();}, 30000)
-	// setTimeout(function(){EnvoieNotifNewsLOLPatch();}, 30000)
+	setTimeout(function(){EnvoieNotifNewsLOLPatch();}, 30000)
 	setTimeout(function(){EnvoieZevent();}, 30000)
 
 
