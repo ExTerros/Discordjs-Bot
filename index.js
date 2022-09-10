@@ -57,7 +57,8 @@ client.on('interactionCreate', async interaction => {
 	async function updateNewsTopics(){
 		
 			(async () => {
-			const browser = await puppeteer.launch( ); 
+			const browser = await puppeteer.launch({headless: true, executablePath: '/usr/bin/chromium-browser'}); 
+ 
 
 				const page = await browser.newPage();
 				await page.goto('https://fr.finalfantasyxiv.com/lodestone/topics/');
@@ -149,7 +150,8 @@ client.on('interactionCreate', async interaction => {
     async function updateNewsNotices(){
     
         (async () => {
-        const browser = await puppeteer.launch( ); 
+        const browser = await puppeteer.launch({headless: true, executablePath: '/usr/bin/chromium-browser'}); 
+ 
 
             const page = await browser.newPage();
             await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/1');
@@ -236,7 +238,8 @@ client.on('interactionCreate', async interaction => {
     async function updateNewsMaintenance(){
     
         (async () => {
-        const browser = await puppeteer.launch( ); 
+        const browser = await puppeteer.launch({headless: true, executablePath: '/usr/bin/chromium-browser'}); 
+ 
 
             const page = await browser.newPage();
             await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/2');
@@ -322,7 +325,8 @@ client.on('interactionCreate', async interaction => {
 	async function updateNewsUpdates(){
 	
 		(async () => {
-		const browser = await puppeteer.launch( ); 
+		const browser = await puppeteer.launch({headless: true, executablePath: '/usr/bin/chromium-browser'}); 
+ 
 
 			const page = await browser.newPage();
 			await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/3');
@@ -408,7 +412,8 @@ client.on('interactionCreate', async interaction => {
 	async function updateNewsStatus(){
 	
 		(async () => {
-		const browser = await puppeteer.launch( ); 
+		const browser = await puppeteer.launch({headless: true, executablePath: '/usr/bin/chromium-browser'}); 
+ 
 
 			const page = await browser.newPage();
 			await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/4');
@@ -498,7 +503,8 @@ client.on('interactionCreate', async interaction => {
 	async function updateNewsStatus(){
 	
 		(async () => {
-		const browser = await puppeteer.launch( ); 
+		const browser = await puppeteer.launch({headless: true, executablePath: '/usr/bin/chromium-browser'}); 
+ 
 
 			const page = await browser.newPage();
 			await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/4');
@@ -591,7 +597,8 @@ client.on('interactionCreate', async interaction => {
 		
 			
 	// 			(async () => {
-	// 			const browser = await puppeteer.launch( ); 
+	// 			const browser = await puppeteer.launch({headless: true, executablePath: '/usr/bin/chromium-browser'}); 
+ 
 
 	// 				const page = await browser.newPage();
 	// 				await page.goto('https://www.leagueoflegends.com/fr-fr/news/tags/patch-notes/');
@@ -719,7 +726,8 @@ client.on('interactionCreate', async interaction => {
 	function UpdateCanvaZevent(){
 	
 		(async () => {
-		const browser = await puppeteer.launch( ); 
+		const browser = await puppeteer.launch({headless: true, executablePath: '/usr/bin/chromium-browser'}); 
+ 
 
 			const page = await browser.newPage();
 			await page.goto('https://place.zevent.fr');
