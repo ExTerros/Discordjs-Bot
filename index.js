@@ -57,14 +57,7 @@ client.on('interactionCreate', async interaction => {
 	async function updateNewsTopics(){
 
 			(async () => {
-			const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser',
-			args: [
-				'--disable-setuid-sandbox',
-				'--no-sandbox',
-				'--disable-gpu',
-				'--no-first-run',
-				
-			]}); 
+			const browser = await puppeteer.launch({args: ['--no-sandbox']});
 
 				const page = await browser.newPage();
 				await page.goto('https://fr.finalfantasyxiv.com/lodestone/topics/');
@@ -154,14 +147,7 @@ client.on('interactionCreate', async interaction => {
         
     
         (async () => {
-        const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser',
-		args: [
-			'--disable-setuid-sandbox',
-			'--no-sandbox',
-			'--disable-gpu',
-			'--no-first-run',
-			
-		]}); 
+        const browser = await puppeteer.launch({args: ['--no-sandbox']});
 
             const page = await browser.newPage();
             await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/1'); 
@@ -247,14 +233,7 @@ client.on('interactionCreate', async interaction => {
         
     
         (async () => {
-        const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser',
-		args: [
-			'--disable-setuid-sandbox',
-			'--no-sandbox',
-			'--disable-gpu',
-			'--no-first-run',
-			
-		]}); 
+        const browser = await puppeteer.launch({args: ['--no-sandbox']});
 
             const page = await browser.newPage();
             await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/2');
@@ -339,14 +318,7 @@ client.on('interactionCreate', async interaction => {
 		
 	
 		(async () => {
-		const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser',
-		args: [
-			'--disable-setuid-sandbox',
-			'--no-sandbox',
-			'--disable-gpu',
-			'--no-first-run',
-			
-		]}); 
+		const browser = await puppeteer.launch({args: ['--no-sandbox']}); 
 
 			const page = await browser.newPage();
 			await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/3');
@@ -431,14 +403,7 @@ client.on('interactionCreate', async interaction => {
 		
 	
 		(async () => {
-		const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser',
-		args: [
-			'--disable-setuid-sandbox',
-			'--no-sandbox',
-			'--disable-gpu',
-			'--no-first-run',
-			
-		]}); 
+		const browser = await puppeteer.launch({args: ['--no-sandbox']});
 
 			const page = await browser.newPage();
 			await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/4');
@@ -526,14 +491,7 @@ client.on('interactionCreate', async interaction => {
 	async function updateNewsStatus(){
 	
 		(async () => {
-		const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser',
-		args: [
-			'--disable-setuid-sandbox',
-			'--no-sandbox',
-			'--disable-gpu',
-			'--no-first-run',
-			
-		]}); 
+		const browser = await puppeteer.launch({args: ['--no-sandbox']});
 
 			const page = await browser.newPage();
 			await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/4');
@@ -622,14 +580,7 @@ client.on('interactionCreate', async interaction => {
 
 		
 				(async () => {
-				const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser',
-				args: [
-					'--disable-setuid-sandbox',
-					'--no-sandbox',
-					'--disable-gpu',
-					'--no-first-run',
-					
-				]}); 
+				const browser = await puppeteer.launch({args: ['--no-sandbox']});
 
 					const page = await browser.newPage();
 					await page.goto('https://www.leagueoflegends.com/fr-fr/news/tags/patch-notes/');
