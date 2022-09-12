@@ -14,7 +14,7 @@ module.exports = {
             .setRequired(true)),
     async execute(interaction){
         //get user input
-        const str = interaction.options.getString('nom');
+        const str = interaction.options.getString('nom').normalize("NFD").replace(/[\u0300-\u036f]/g, "");
         const champion = str.split(" ");
         for (var i = 0; i < champion.length; i++) {
           champion[i] = champion[i].charAt(0).toUpperCase() + champion[i].slice(1);
@@ -26,9 +26,8 @@ module.exports = {
         //get list of league of legends champion 
         const ddragonJson = await axios.get(`http://ddragon.leagueoflegends.com/cdn/${lolLastVersion}/data/fr_FR/champion.json`);
         await interaction.reply('Je recherche le champion');
+
         if (ddragonJson.data['data'][strChampion]) {
-
-
         (async () => {
             const browser = await puppeteer.launch({headless: true,	args: ['--no-sandbox']});
             const page = await browser.newPage();
