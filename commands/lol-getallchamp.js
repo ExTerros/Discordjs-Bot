@@ -13,25 +13,22 @@ module.exports = {
         const lolLastVersion = lolVersion.data[0];
         //get list of league of legends champion 
         const ddragonJson = await axios.get(`http://ddragon.leagueoflegends.com/cdn/${lolLastVersion}/data/fr_FR/champion.json`);
-        const listJson = ddragonJson.data['data']['Aatrox'];
+        const championList = ddragonJson.data['data']
         // get champion rotation
         const rotationChampionList = await axios.get(`https://euw1.api.riotgames.com/lol/platform/v3/champion-rotations?api_key=${developerriotgameskey}`)
-        const rotationChampion = rotationChampionList.data['freeChampionIds']
-        const lvlForRotationNewPlayer = rotationChampionList.data['maxNewPlayerLevel']
-        const rotationChampionNewPlayer = rotationChampionList.data['freeChampionIdsForNewPlayers']
-       
-        
+        const freeChampionIds = rotationChampionList.data['freeChampionIds']
+        const freeChampionIdsForNewPlayers = rotationChampionList.data['maxNewPlayerLevel']
+        const rotationChampionNewPlayer = rotationChampionList['data']['freeChampionIdsForNewPlayers']
 
-        
-        for (let i = 0; i < rotationChampion.length; i++) {
-            const rotationChampionId = rotationChampion[i];
-            
+function name(params) {
+    
+}
+
+
+        for (let i = 0; i < freeChampionIds.length; i++) {
+            const element = freeChampionIds[i];
+            console.log(element);
         }
-        console.log(listJson);
-        // for (let i = 0; i < listJson.length; i++) {
-        //     const test = listJson[i];
-        //     console.log(test);
-        // }
-        
+
     }
 }
