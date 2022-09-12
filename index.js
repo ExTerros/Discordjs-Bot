@@ -132,7 +132,7 @@ client.on('interactionCreate', async interaction => {
 			  }
 			  else{
 				console.log('Pas de Nouveau patch lol');
-				WriteFiles('./scrap/LolPatch.jsonn', listUpdate);
+				WriteFiles('./scrap/LolPatch.json', listUpdate);
 			  }
 			  
 			  return null;
