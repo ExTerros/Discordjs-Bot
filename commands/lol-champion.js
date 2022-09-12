@@ -14,8 +14,12 @@ module.exports = {
             .setRequired(true)),
     async execute(interaction){
         //get user input
-        const champion = interaction.options.getString('nom');
-        const strChampion = champion.charAt(0).toUpperCase() + champion.slice(1);
+        const str = interaction.options.getString('nom');
+        const champion = str.split(" ");
+        for (var i = 0; i < champion.length; i++) {
+          champion[i] = champion[i].charAt(0).toUpperCase() + champion[i].slice(1);
+        }
+        const strChampion = champion.join(" ").replace(' ','');
         //get last version of league of legends
         const lolVersion = await axios.get('https://ddragon.leagueoflegends.com/api/versions.json');
         const lolLastVersion = lolVersion.data[0];
@@ -40,11 +44,7 @@ module.exports = {
             await new Promise(function(resolve) { 
                    setTimeout(resolve, 2000)
             });
-        });
-        console.log(page.url());
-        console.log(typeof page.url());
-
-          
+        });      
     
             const tier = await page.evaluate(() => {
                 const tier = document.querySelector(".champion-tier .tier");
