@@ -3,7 +3,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const puppeteer = require('puppeteer');
 const { Client, Collection, GatewayIntentBits, EmbedBuilder } = require('discord.js');
-const { token, channelNews, ZeventNews } = require('./config.json');
+const { token, channelNews } = require('./config.json');
 
 
 
