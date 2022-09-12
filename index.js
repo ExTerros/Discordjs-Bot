@@ -252,11 +252,11 @@ setInterval(function(){
 	// setTimeout(function(){EnvoieZevent();}, 30000)
 
 
-}, 30000) //1200000
+}, 600000) //1200000
 
 function WriteFiles(file, data){
 
-fs.writeFile(file, JSON.stringify(data, null, 4), (err)=>{
+fs.writeFile(file, JSON.stringify(data, null, 4), (err)=>{ 		
 if(err)
 console.log(err)
 })
