@@ -57,7 +57,13 @@ client.on('interactionCreate', async interaction => {
 	async function updateNewsTopics(){
 
 			(async () => {
-			const browser = await puppeteer.launch({args: ['--no-sandbox']});
+			const browser = await puppeteer.launch({headless:(headless_mode !== 'true')? false : true,
+			ignoreHTTPSErrors: true,
+			slowMo: 0,
+			args: ['--no-sandbox',
+			'--remote-debugging-port=9222',
+			"--remote-debugging-address=0.0.0.0", // You know what your doing?
+			'--disable-gpu', "--disable-features=IsolateOrigins,site-per-process", '--blink-settings=imagesEnabled=true']});
 
 				const page = await browser.newPage();
 				await page.goto('https://fr.finalfantasyxiv.com/lodestone/topics/');
@@ -147,7 +153,13 @@ client.on('interactionCreate', async interaction => {
         
     
         (async () => {
-        const browser = await puppeteer.launch({args: ['--no-sandbox']});
+        const browser = await puppeteer.launch({headless:(headless_mode !== 'true')? false : true,
+			ignoreHTTPSErrors: true,
+			slowMo: 0,
+			args: ['--no-sandbox',
+			'--remote-debugging-port=9222',
+			"--remote-debugging-address=0.0.0.0", // You know what your doing?
+			'--disable-gpu', "--disable-features=IsolateOrigins,site-per-process", '--blink-settings=imagesEnabled=true']});
 
             const page = await browser.newPage();
             await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/1'); 
@@ -233,7 +245,13 @@ client.on('interactionCreate', async interaction => {
         
     
         (async () => {
-        const browser = await puppeteer.launch({args: ['--no-sandbox']});
+        const browser = await puppeteer.launch({headless:(headless_mode !== 'true')? false : true,
+			ignoreHTTPSErrors: true,
+			slowMo: 0,
+			args: ['--no-sandbox',
+			'--remote-debugging-port=9222',
+			"--remote-debugging-address=0.0.0.0", // You know what your doing?
+			'--disable-gpu', "--disable-features=IsolateOrigins,site-per-process", '--blink-settings=imagesEnabled=true']});
 
             const page = await browser.newPage();
             await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/2');
@@ -318,7 +336,13 @@ client.on('interactionCreate', async interaction => {
 		
 	
 		(async () => {
-		const browser = await puppeteer.launch({args: ['--no-sandbox']}); 
+		const browser = await puppeteer.launch({headless:(headless_mode !== 'true')? false : true,
+			ignoreHTTPSErrors: true,
+			slowMo: 0,
+			args: ['--no-sandbox',
+			'--remote-debugging-port=9222',
+			"--remote-debugging-address=0.0.0.0", // You know what your doing?
+			'--disable-gpu', "--disable-features=IsolateOrigins,site-per-process", '--blink-settings=imagesEnabled=true']}); 
 
 			const page = await browser.newPage();
 			await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/3');
@@ -403,7 +427,13 @@ client.on('interactionCreate', async interaction => {
 		
 	
 		(async () => {
-		const browser = await puppeteer.launch({args: ['--no-sandbox']});
+		const browser = await puppeteer.launch({headless:(headless_mode !== 'true')? false : true,
+			ignoreHTTPSErrors: true,
+			slowMo: 0,
+			args: ['--no-sandbox',
+			'--remote-debugging-port=9222',
+			"--remote-debugging-address=0.0.0.0", // You know what your doing?
+			'--disable-gpu', "--disable-features=IsolateOrigins,site-per-process", '--blink-settings=imagesEnabled=true']});
 
 			const page = await browser.newPage();
 			await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/4');
@@ -491,7 +521,13 @@ client.on('interactionCreate', async interaction => {
 	async function updateNewsStatus(){
 	
 		(async () => {
-		const browser = await puppeteer.launch({args: ['--no-sandbox']});
+		const browser = await puppeteer.launch({ headless:(headless_mode !== 'true')? false : true,
+			ignoreHTTPSErrors: true,
+			slowMo: 0,
+			args: ['--no-sandbox',
+			'--remote-debugging-port=9222',
+			"--remote-debugging-address=0.0.0.0", // You know what your doing?
+			'--disable-gpu', "--disable-features=IsolateOrigins,site-per-process", '--blink-settings=imagesEnabled=true']});
 
 			const page = await browser.newPage();
 			await page.goto('https://fr.finalfantasyxiv.com/lodestone/news/category/4');
@@ -580,7 +616,13 @@ client.on('interactionCreate', async interaction => {
 
 		
 				(async () => {
-				const browser = await puppeteer.launch({args: ['--no-sandbox']});
+				const browser = await puppeteer.launch({headless:(headless_mode !== 'true')? false : true,
+			ignoreHTTPSErrors: true,
+			slowMo: 0,
+			args: ['--no-sandbox',
+			'--remote-debugging-port=9222',
+			"--remote-debugging-address=0.0.0.0", // You know what your doing?
+			'--disable-gpu', "--disable-features=IsolateOrigins,site-per-process", '--blink-settings=imagesEnabled=true']});
 
 					const page = await browser.newPage();
 					await page.goto('https://www.leagueoflegends.com/fr-fr/news/tags/patch-notes/');
