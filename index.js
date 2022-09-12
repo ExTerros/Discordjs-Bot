@@ -57,7 +57,7 @@ client.on('interactionCreate', async interaction => {
 	async function updateNewsTopics(){
 
 			(async () => {
-			const browser = await puppeteer.launch({headless:(headless_mode !== 'true')? false : true,
+			const browser = await puppeteer.launch({headless: true,
 			ignoreHTTPSErrors: true,
 			slowMo: 0,
 			args: ['--no-sandbox',
@@ -153,7 +153,7 @@ client.on('interactionCreate', async interaction => {
         
     
         (async () => {
-        const browser = await puppeteer.launch({headless:(headless_mode !== 'true')? false : true,
+        const browser = await puppeteer.launch({headless: true,
 			ignoreHTTPSErrors: true,
 			slowMo: 0,
 			args: ['--no-sandbox',
@@ -245,7 +245,7 @@ client.on('interactionCreate', async interaction => {
         
     
         (async () => {
-        const browser = await puppeteer.launch({headless:(headless_mode !== 'true')? false : true,
+        const browser = await puppeteer.launch({headless: true,
 			ignoreHTTPSErrors: true,
 			slowMo: 0,
 			args: ['--no-sandbox',
@@ -336,7 +336,7 @@ client.on('interactionCreate', async interaction => {
 		
 	
 		(async () => {
-		const browser = await puppeteer.launch({headless:(headless_mode !== 'true')? false : true,
+		const browser = await puppeteer.launch({headless: true,
 			ignoreHTTPSErrors: true,
 			slowMo: 0,
 			args: ['--no-sandbox',
@@ -427,7 +427,7 @@ client.on('interactionCreate', async interaction => {
 		
 	
 		(async () => {
-		const browser = await puppeteer.launch({headless:(headless_mode !== 'true')? false : true,
+		const browser = await puppeteer.launch({headless: true,
 			ignoreHTTPSErrors: true,
 			slowMo: 0,
 			args: ['--no-sandbox',
@@ -521,7 +521,7 @@ client.on('interactionCreate', async interaction => {
 	async function updateNewsStatus(){
 	
 		(async () => {
-		const browser = await puppeteer.launch({ headless:(headless_mode !== 'true')? false : true,
+		const browser = await puppeteer.launch({ headless: true,
 			ignoreHTTPSErrors: true,
 			slowMo: 0,
 			args: ['--no-sandbox',
@@ -616,7 +616,7 @@ client.on('interactionCreate', async interaction => {
 
 		
 				(async () => {
-				const browser = await puppeteer.launch({headless:(headless_mode !== 'true')? false : true,
+				const browser = await puppeteer.launch({headless: true,
 			ignoreHTTPSErrors: true,
 			slowMo: 0,
 			args: ['--no-sandbox',
