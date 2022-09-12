@@ -94,18 +94,22 @@ module.exports = {
                 return MatchesText;
               });
 
-            const select = await page.waitForSelector("div.champion-recommended-build div.media-query_DESKTOP_MEDIUM__DESKTOP_LARGE")
-            await select.screenshot({path: "./assets/build.png"})
+            const select = await page.waitForSelector("div.champion-recommended-build div.media-query_DESKTOP_MEDIUM__DESKTOP_LARGE");
+            await select.screenshot({path: "./assets/build.png"});
+            const rune = await page.waitForSelector("#content > div > div.champion-profile-content-container.content-side-padding > div > div > div.champion-profile-page > div > div.rune-spell > div > div.content-section_content.recommended-build_runes");
+            await rune.screenshot({path: "./assets/rune.png"});
         
           await browser.close();  
 
         const file = new AttachmentBuilder("./assets/build.png");
+        const runes = new AttachmentBuilder("./assets/runes.png");
         const listJson = ddragonJson.data['data'][strChampion]; 
         const ChampEmbed = new EmbedBuilder()
         .setColor('#FFC107')
         .setAuthor({ name: listJson['name'], iconURL: `${ChampionImage}` })
         .setTitle(`${listJson['name']}, ${listJson['title']}`)
         .setURL(page.url())
+        .setThumbnail('attachment://runes.png')
         .setDescription(listJson['blurb'])
         .addFields(
             { name: 'Tier', value: `${tier}`, inline: true },
@@ -125,7 +129,7 @@ module.exports = {
         const ChampEmbedTag = EmbedBuilder.from(ChampEmbed)
             .addFields(
                 { name: 'Type', value: `${tags}`, inline: true })
-            interaction.editReply({ embeds: [ChampEmbedTag], files: [file] });
+            interaction.editReply({ embeds: [ChampEmbedTag], files: [file, runes] });
       })();
 
         }else{
