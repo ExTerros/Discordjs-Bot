@@ -43,7 +43,9 @@ module.exports = {
             await new Promise(function(resolve) { 
                    setTimeout(resolve, 2000)
             });
-        });      
+        });
+        const rune = await page.waitForSelector("#content > div > div.champion-profile-content-container.content-side-padding > div > div > div.champion-profile-page > div > div.rune-spell > div > div.content-section_content.recommended-build_runes");
+            await rune.screenshot({path: "./assets/runes.png"});      
     
             const tier = await page.evaluate(() => {
                 const tier = document.querySelector(".champion-tier .tier");
@@ -96,8 +98,7 @@ module.exports = {
 
             const select = await page.waitForSelector("div.champion-recommended-build div.media-query_DESKTOP_MEDIUM__DESKTOP_LARGE");
             await select.screenshot({path: "./assets/build.png"});
-            const rune = await page.waitForSelector("#content > div > div.champion-profile-content-container.content-side-padding > div > div > div.champion-profile-page > div > div.rune-spell > div > div.content-section_content.recommended-build_runes");
-            await rune.screenshot({path: "./assets/rune.png"});
+            
         
           await browser.close();  
 
