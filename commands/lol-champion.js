@@ -26,7 +26,7 @@ module.exports = {
 
 
         (async () => {
-            const browser = await puppeteer.launch({headless: true, executablePath: '/usr/bin/chromium-browser'}); 
+            const browser = await puppeteer.launch({headless: true,	args: ['--no-sandbox']});
             const page = await browser.newPage();
             await page.goto(`https://u.gg/lol/champions/${strChampion}/build`);
             await page.click('button[mode=primary]');
@@ -41,6 +41,9 @@ module.exports = {
                    setTimeout(resolve, 2000)
             });
         });
+        console.log(page.url());
+        console.log(typeof page.url());
+
           
     
             const tier = await page.evaluate(() => {
@@ -48,6 +51,18 @@ module.exports = {
                 const tierText = tier.innerText;
             
                 return tierText;
+              });
+              const ChampionName = await page.evaluate(() => {
+                const ChampionName = document.querySelector(".champion-label .champion-name");
+                const ChampionNameText = ChampionName.innerText;
+            
+                return ChampionNameText;
+              });
+              const ChampionImage = await page.evaluate(() => {
+                const ChampionImage = document.querySelector(".champion-image-border .champion-image");
+                const ChampionImageText = ChampionImage.src;
+            
+                return ChampionImageText;
               });
               const Win = await page.evaluate(() => {
                 const Win = document.querySelector(".win-rate .value");
@@ -79,6 +94,7 @@ module.exports = {
             
                 return MatchesText;
               });
+
             const select = await page.waitForSelector("div.champion-recommended-build div.media-query_DESKTOP_MEDIUM__DESKTOP_LARGE")
             await select.screenshot({path: "./assets/build.png"})
         
@@ -88,9 +104,9 @@ module.exports = {
         const listJson = ddragonJson.data['data'][strChampion]; 
         const ChampEmbed = new EmbedBuilder()
         .setColor('#FFC107')
-        .setAuthor({ name: listJson['name'], iconURL: `https://www.mobafire.com/images/champion/square/${listJson['name']}.png` })
+        .setAuthor({ name: listJson['name'], iconURL: `${ChampionImage}` })
         .setTitle(`${listJson['name']}, ${listJson['title']}`)
-        .setURL(`https://u.gg/lol/champions/${listJson['name']}/build`)
+        .setURL(page.url())
         .setDescription(listJson['blurb'])
         .addFields(
             { name: 'Tier', value: `${tier}`, inline: true },
