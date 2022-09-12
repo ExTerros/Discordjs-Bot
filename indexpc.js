@@ -686,94 +686,94 @@ client.on('interactionCreate', async interaction => {
     ************* ZEVENT CHANNEL UPDATE ****************
     ****************************************************/	
    
-    async function UpdateZevent(){
-		const fs = require('node:fs');
-		const zapi = require('zevent-api');
-		console.log('Update Zevent');
+    // async function UpdateZevent(){
+	// 	const fs = require('node:fs');
+	// 	const zapi = require('zevent-api');
+	// 	console.log('Update Zevent');
 
-		zapi.viewersCount((viwers) => {
-		zapi.donnationAmount((amount) => {
-		zapi.getOnline((online) => {
-			const s = new Array();
-			online.forEach((on) => {
-				s.push(on.display+" ("+on.game+")");
-			});
-			console.log(amount.formatted);
+	// 	zapi.viewersCount((viwers) => {
+	// 	zapi.donnationAmount((amount) => {
+	// 	zapi.getOnline((online) => {
+	// 		const s = new Array();
+	// 		online.forEach((on) => {
+	// 			s.push(on.display+" ("+on.game+")");
+	// 		});
+	// 		console.log(amount.formatted);
 	
 			
 		
-				var ZeventChiffre = new Object();
-				ZeventChiffre.StreamerEnLigne = [online.length]
-				ZeventChiffre.ViwerEnLigne  = viwers.formatted;
-				ZeventChiffre.TotalDon = amount.formatted;
+	// 			var ZeventChiffre = new Object();
+	// 			ZeventChiffre.StreamerEnLigne = [online.length]
+	// 			ZeventChiffre.ViwerEnLigne  = viwers.formatted;
+	// 			ZeventChiffre.TotalDon = amount.formatted;
 					
 		
-				fs.writeFile('./scrap/ZeventStats.json', JSON.stringify(ZeventChiffre, null, 3), (err)=>{
-					if(err)
-					console.log(err);
-				})
-		});
-		});
-		});  
+	// 			fs.writeFile('./scrap/ZeventStats.json', JSON.stringify(ZeventChiffre, null, 3), (err)=>{
+	// 				if(err)
+	// 				console.log(err);
+	// 			})
+	// 	});
+	// 	});
+	// 	});  
 	
 	
-		return;
+	// 	return;
 			
-		}
+	// 	}
 
-	function UpdateCanvaZevent(){
-		const puppeteer = require('puppeteer');
+	// function UpdateCanvaZevent(){
+	// 	const puppeteer = require('puppeteer');
 	
-		(async () => {
-		const browser = await puppeteer.launch({headless: true}); 
+	// 	(async () => {
+	// 	const browser = await puppeteer.launch({headless: true}); 
 
-			const page = await browser.newPage();
-			await page.goto('https://place.zevent.fr');
-			page.click('.board-state')
-			await page.evaluate(async() => {
-				await new Promise(function(resolve) { 
-					   setTimeout(resolve, 2000)
-				});
-			});
-			await page.setViewport({
-				width: 1920,
-				height: 1080,
-				deviceScaleFactor: 10
-			  });
-			const select = await page.waitForSelector("div.game-container__inner img:nth-child(2)")
-			await select.screenshot({path: "./assets/zeventcanva.png"})
+	// 		const page = await browser.newPage();
+	// 		await page.goto('https://place.zevent.fr');
+	// 		page.click('.board-state')
+	// 		await page.evaluate(async() => {
+	// 			await new Promise(function(resolve) { 
+	// 				   setTimeout(resolve, 2000)
+	// 			});
+	// 		});
+	// 		await page.setViewport({
+	// 			width: 1920,
+	// 			height: 1080,
+	// 			deviceScaleFactor: 10
+	// 		  });
+	// 		const select = await page.waitForSelector("div.game-container__inner img:nth-child(2)")
+	// 		await select.screenshot({path: "./assets/zeventcanva.png"})
 	
-				await browser.close();  
+	// 			await browser.close();  
 	  
 	
-		})();
+	// 	})();
 	
-		return;
-	}
+	// 	return;
+	// }
 		
 		
-	function EnvoieZevent(){
-		const { AttachmentBuilder } = require('discord.js');
-		const file = new AttachmentBuilder('./assets/zeventcanva.png');
-			var listZevent = fs.readFileSync('./scrap/ZeventStats.json', 'utf-8')
-					console.log(listZevent);
-					const strListZevent = listZevent.replace('{','').replace('}','').replace('StreamerEnLigne','Streamer En Ligne ').replace('ViwerEnLigne','Viwer En Ligne ').replace('TotalDon','Total De Don ').replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('[',"").replace(']',"").replace(',',"").replace(',',"")
-					const frEmbed = new EmbedBuilder()
-						.setColor('#47e014')
-						.setAuthor({ name: 'Informations Zevent', iconURL: 'https://zevent.fr/assets/logo.5cb95698.png' })
-						.setThumbnail("https://zevent.fr/assets/logo.5cb95698.png")
-						.setDescription(strListZevent)
-						.setImage('attachment://zeventcanva.png')
-						.setTimestamp()
+	// function EnvoieZevent(){
+	// 	const { AttachmentBuilder } = require('discord.js');
+	// 	const file = new AttachmentBuilder('./assets/zeventcanva.png');
+	// 		var listZevent = fs.readFileSync('./scrap/ZeventStats.json', 'utf-8')
+	// 				console.log(listZevent);
+	// 				const strListZevent = listZevent.replace('{','').replace('}','').replace('StreamerEnLigne','Streamer En Ligne ').replace('ViwerEnLigne','Viwer En Ligne ').replace('TotalDon','Total De Don ').replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('"',"").replace('[',"").replace(']',"").replace(',',"").replace(',',"")
+	// 				const frEmbed = new EmbedBuilder()
+	// 					.setColor('#47e014')
+	// 					.setAuthor({ name: 'Informations Zevent', iconURL: 'https://zevent.fr/assets/logo.5cb95698.png' })
+	// 					.setThumbnail("https://zevent.fr/assets/logo.5cb95698.png")
+	// 					.setDescription(strListZevent)
+	// 					.setImage('attachment://zeventcanva.png')
+	// 					.setTimestamp()
 
-					client.channels.cache.get(ZeventNews).send({ embeds: [frEmbed], files: [file] })
-					client.channels.cache.get(channelNews).send({ embeds: [frEmbed], files: [file] })
+	// 				client.channels.cache.get(ZeventNews).send({ embeds: [frEmbed], files: [file] })
+	// 				client.channels.cache.get(channelNews).send({ embeds: [frEmbed], files: [file] })
 
 		
 					
-				return null;
+	// 			return null;
 		
-			}	
+	// 		}	
 
 //function WriteFile and Interval
 		
@@ -784,8 +784,8 @@ setInterval(function(){
 	updateNewsUpdates()
 	updateNewsStatus()
 	updateNewsLOLPatch()
-	UpdateCanvaZevent()
-	UpdateZevent()
+	// UpdateCanvaZevent()
+	// UpdateZevent()
 
 	console.log('set timer');
 
@@ -795,7 +795,7 @@ setInterval(function(){
 	setTimeout(function(){EnvoieNotifNewsUpdates();}, 30000)
 	setTimeout(function(){EnvoieNotifNewsStatus();}, 30000)
 	setTimeout(function(){EnvoieNotifNewsLOLPatch();}, 30000)
-	setTimeout(function(){EnvoieZevent();}, 30000)
+	// setTimeout(function(){EnvoieZevent();}, 30000)
 
 
 }, 1200000) //1200000
