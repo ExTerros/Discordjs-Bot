@@ -4,3 +4,11 @@ config.json
 assets/
 scrap/LolPatch.jsonn
 scrap/ZeventStats.json
+DataDragonHelper/12.17.1/en_US/champion.json
+DataDragonHelper/12.17.1/en_US/championFull.json
+DataDragonHelper/12.17.1/en_US/item.json
+DataDragonHelper/12.17.1/en_US/language.json
+DataDragonHelper/12.17.1/en_US/map.json
+DataDragonHelper/12.17.1/en_US/profileicon.json
+DataDragonHelper/12.17.1/en_US/runesReforged.json
+DataDragonHelper/12.17.1/en_US/summoner.json

@@ -1,34 +1,40 @@
+process.env.LEAGUE_API_PLATFORM_ID = 'euw1'
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const { default: axios } = require("axios");
-const fs = require('node:fs');
 const { developerriotgameskey } = require('../config.json');
+const LeagueJS = require('LeagueJS');
+const leagueJs = new LeagueJS(developerriotgameskey, {STATIC_DATA_ROOT: 'DataDragonHelper'});
 
 module.exports = {
 	data: new SlashCommandBuilder()
 	.setName('rotachamp')
 	.setDescription('Champion en rotation Lol'),
     async execute(interaction){
-        //get last version of league of legends
-        const lolVersion = await axios.get('https://ddragon.leagueoflegends.com/api/versions.json');
-        const lolLastVersion = lolVersion.data[0];
-        //get list of league of legends champion 
-        const ddragonJson = await axios.get(`http://ddragon.leagueoflegends.com/cdn/${lolLastVersion}/data/fr_FR/champion.json`);
-        const championList = ddragonJson.data['data']
-        // get champion rotation
-        const rotationChampionList = await axios.get(`https://euw1.api.riotgames.com/lol/platform/v3/champion-rotations?api_key=${developerriotgameskey}`)
-        const freeChampionIds = rotationChampionList.data['freeChampionIds']
-        const freeChampionIdsForNewPlayers = rotationChampionList.data['maxNewPlayerLevel']
-        const rotationChampionNewPlayer = rotationChampionList['data']['freeChampionIdsForNewPlayers']
-
-function name(params) {
-    
-}
-
-
-        for (let i = 0; i < freeChampionIds.length; i++) {
-            const element = freeChampionIds[i];
-            console.log(element);
-        }
+        leagueJs.Champion.gettingRotations()
+        .then((result) => {
+            // console.log(result)
+            result['freeChampionIds'].forEach(element => {
+                leagueJs.StaticData.gettingChampionById(element)
+                .then((champName) => {
+                    console.log(champName['name']);
+                }).catch((err) => {
+                    console.log(err);
+                });
+            });
+            // for (let i = 0; i < result['freeChampionIds'].length; i++) {
+            //     const element = result['freeChampionIds'][i];
+            //     leagueJs.StaticData.gettingChampionById(element)
+            //     .then((championName) => {
+            //         championName['name']
+            //     }).catch((err) => {
+            //         console.log(err);
+            //     });
+            // }
+            
+        }).catch((err) => {
+            console.log(err);
+            
+        });
+        
 
     }
 }
