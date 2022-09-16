@@ -70,13 +70,14 @@ module.exports = {
                                                     console.log(champtionBanned9['name']);
                                                     console.log('Team Rouge');
                                                     ActualGameLol.addFields(
-                                                        { name: 'Ban Team Rouge', value: `${champtionBanned5['name']}\n${champtionBanned6['name']}
-                                                                                         ${champtionBanned7['name']}\n${champtionBanned8['name']}
-                                                                                         ${champtionBanned9['name']}`, inline: true},
-                                                        { name: '\u200B', value: '\u200B', inline: true },
                                                         { name: 'Ban Team Bleu', value: `${champtionBanned0['name']}\n${champtionBanned1['name']}
                                                                                          ${champtionBanned2['name']}\n${champtionBanned3['name']}
                                                                                          ${champtionBanned4['name']}`, inline: true},
+                                                        { name: '\u200B', value: '\u200B', inline: true },
+                                                        { name: 'Ban Team Rouge', value: `${champtionBanned5['name']}\n${champtionBanned6['name']}
+                                                                                         ${champtionBanned7['name']}\n${champtionBanned8['name']}
+                                                                                         ${champtionBanned9['name']}`, inline: true},
+                                                        
                                                     )
                                                     leagueJs.StaticData.gettingChampionById(currentGame['participants'][0]['championId'])
                                                     .then((playerChampNumber1) => {
