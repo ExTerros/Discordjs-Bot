@@ -23,50 +23,107 @@ module.exports = {
             .then((currentGame) => {
                 let PseudoAccount = account['name'];
                 let LevelAccount = account['summonerLevel']
-                console.log(currentGame);
+                let date = new Date(currentGame['gameStartTime'])
+                // console.log(currentGame);
                 let ActualGameLol = new EmbedBuilder()
                 .setColor('#92c0d3')
                 .setTitle(`Partie en cours de ${PseudoAccount} Level ${LevelAccount}`)
-                .setTimestamp()
-                if (currentGame['bannedChampions'][0]) {    
+                .setFooter({ text: `Partie lancée le ${date.toLocaleString('fr-FR')}`, iconURL: 'https://i.imgur.com/WyRQH0x.jpg' });
+                if (currentGame['bannedChampions'][0]) {
                 leagueJs.StaticData.gettingChampionById(currentGame['bannedChampions'][0]['championId'])
                 .then((champtionBanned0) => {
-                    console.log(champtionBanned0['name']);
+                    if (!champtionBanned0) {
+                        champtionBanned0['name'] = 'aucun ban'
+                    }
+                    console.log(champtionBanned0);
                     console.log('Team Bleu');
                     leagueJs.StaticData.gettingChampionById(currentGame['bannedChampions'][1]['championId'])
                     .then((champtionBanned1) => {
+                        if (champtionBanned1 == undefined) {
+                            var champtionBanned1= {
+                                name: ''
+                            }
+                            console.log(champtionBanned1['name']);
+                        }
                     console.log(champtionBanned1['name']);
                     console.log('Team Bleu');
                         leagueJs.StaticData.gettingChampionById(currentGame['bannedChampions'][2]['championId'])
                         .then((champtionBanned2) => {
+                            if (champtionBanned2 == undefined) {
+                                var champtionBanned2= {
+                                    name: ''
+                                }
+                                console.log(champtionBanned2['name']);
+                            }
                         console.log(champtionBanned2['name']);
                         console.log('Team Bleu');
                             leagueJs.StaticData.gettingChampionById(currentGame['bannedChampions'][3]['championId'])
                             .then((champtionBanned3) => {
+                                if (champtionBanned3 == undefined) {
+                                    var champtionBanned3= {
+                                        name: ''
+                                    }
+                                    console.log(champtionBanned3['name']);
+                                }
                             console.log(champtionBanned3['name']);
                             console.log('Team Bleu');
                                 leagueJs.StaticData.gettingChampionById(currentGame['bannedChampions'][4]['championId'])
                                 .then((champtionBanned4) => {
-                                console.log(champtionBanned4['name']);
+                                    if (champtionBanned4 == undefined) {
+                                        var champtionBanned4= {
+                                            name: ''
+                                        }
+                                        console.log(champtionBanned4['name']);
+                                    }
                                 console.log('Team Bleu');
                                     leagueJs.StaticData.gettingChampionById(currentGame['bannedChampions'][5]['championId'])
                                     .then((champtionBanned5) => {
+                                        if (champtionBanned5 == undefined) {
+                                            var champtionBanned5= {
+                                                name: ''
+                                            }
+                                            console.log(champtionBanned5['name']);
+                                        }
                                     console.log(champtionBanned5['name']);
                                     console.log('Team Rouge');
                                         leagueJs.StaticData.gettingChampionById(currentGame['bannedChampions'][6]['championId'])
                                         .then((champtionBanned6) => {
+                                            if (champtionBanned6 == undefined) {
+                                                var champtionBanned6= {
+                                                    name: ''
+                                                }
+                                                console.log(champtionBanned6['name']);
+                                            }
                                         console.log(champtionBanned6['name']);
                                         console.log('Team Rouge');
                                             leagueJs.StaticData.gettingChampionById(currentGame['bannedChampions'][7]['championId'])
                                             .then((champtionBanned7) => {
+                                                if (champtionBanned7 == undefined) {
+                                                    var champtionBanned7= {
+                                                        name: ''
+                                                    }
+                                                    console.log(champtionBanned7['name']);
+                                                }
                                             console.log(champtionBanned7['name']);
                                             console.log('Team Rouge');
                                                 leagueJs.StaticData.gettingChampionById(currentGame['bannedChampions'][8]['championId'])
                                                 .then((champtionBanned8) => {
+                                                    if (champtionBanned8 == undefined) {
+                                                        var champtionBanned8= {
+                                                            name: ''
+                                                        }
+                                                        console.log(champtionBanned8['name']);
+                                                    }
                                                 console.log(champtionBanned8['name']);
                                                 console.log('Team Rouge');
                                                     leagueJs.StaticData.gettingChampionById(currentGame['bannedChampions'][9]['championId'])
                                                     .then((champtionBanned9) => {
+                                                        if (champtionBanned9 == undefined) {
+                                                            var champtionBanned9= {
+                                                                name: ''
+                                                            }
+                                                            console.log(champtionBanned9['name']);
+                                                        }
                                                     console.log(champtionBanned9['name']);
                                                     console.log('Team Rouge');
                                                     ActualGameLol.addFields(
