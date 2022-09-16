@@ -2,7 +2,7 @@
 process.env.LEAGUE_API_PLATFORM_ID = 'euw1'
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const { developerriotgameskey } = require('../config.json');
-const LeagueJS = require('LeagueJS');
+const LeagueJS = require('../node_modules/leaguejs/lib/LeagueJS');
 const leagueJs = new LeagueJS(developerriotgameskey, {STATIC_DATA_ROOT: 'DataDragonHelper'});
 
 module.exports = {
@@ -53,11 +53,11 @@ module.exports = {
                                         const cinqChampionName = bestCinqChamp['name'];
                                         const cinqChampionMastery = `M${mastery[4]['championLevel']} ${mastery[4]['championPoints']}`;
                                         AccountLol.addFields(
-                                            { name: 'Top Champion', value: `${firstChampionName}\n└${firstChampionMastery}
-                                                                            ${secondeChampionName}\n└${secondeChampionMastery}
-                                                                            ${threeChampionName}\n└${threeChampionMastery}
-                                                                            ${quatreChampionName}\n└${quatreChampionMastery}
-                                                                            ${cinqChampionName}\n└${cinqChampionMastery}`, inline: true }
+                                            { name: 'Top Champion', value: `**${firstChampionName}**\n└${firstChampionMastery}
+                                                                            **${secondeChampionName}**\n└${secondeChampionMastery}
+                                                                            **${threeChampionName}**\n└${threeChampionMastery}
+                                                                            **${quatreChampionName}**\n└${quatreChampionMastery}
+                                                                            **${cinqChampionName}**\n└${cinqChampionMastery}`, inline: true }
                                         )
                                             leagueJs.League.gettingEntriesForSummonerId(account['id'])
                                             .then((ranked) => {
