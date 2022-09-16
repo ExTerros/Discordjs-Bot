@@ -23,10 +23,7 @@ module.exports = {
             const IconAccount = account['profileIconId']
             const AccountLol = new EmbedBuilder()
             .setColor('#92c0d3')
-            .setTitle(`Profil de ${PseudoAccount}`)
-            .addFields(
-                { name: 'Level', value: `${LevelAccount}`, inline: true  }
-            )
+            .setTitle(`Profil de ${PseudoAccount} Level ${LevelAccount}`)
             .setThumbnail(`http://ddragon.leagueoflegends.com/cdn/12.17.1/img/profileicon/${IconAccount}.png`)
             .setTimestamp()
             leagueJs.ChampionMastery.gettingBySummoner(account['id'])
@@ -62,7 +59,20 @@ module.exports = {
                                                                             ${quatreChampionName}\n└${quatreChampionMastery}
                                                                             ${cinqChampionName}\n└${cinqChampionMastery}`, inline: true }
                                         )
-                                        interaction.reply({ embeds: [AccountLol] });
+                                            leagueJs.League.gettingEntriesForSummonerId(account['id'])
+                                            .then((ranked) => {
+                                                console.log(ranked.length);
+                                                if (ranked.length == 2) {
+                                                    AccountLol.addFields(
+                                                        { name: `${ranked[0]['queueType'].replace('_',' ').replace('_SR','')}`, value: `${ranked[0]['tier']} ${ranked[0]['rank']} ${ranked[0]['leaguePoints']} LP \n ${ranked[0]['wins']}W ${ranked[0]['losses']}L`, inline: true },
+                                                        { name: `${ranked[1]['queueType'].replace('_',' ').replace('_','')}`, value: `${ranked[1]['tier']} ${ranked[1]['rank']} ${ranked[1]['leaguePoints']} LP \n ${ranked[1]['wins']}W ${ranked[1]['losses']}L`, inline: true }
+                                                        )
+
+                                                }else{
+                                                    console.log('Pas de Ranked');
+                                                }
+                                                interaction.reply({ embeds: [AccountLol] });
+                                            })
 
                                     })
                                 })
