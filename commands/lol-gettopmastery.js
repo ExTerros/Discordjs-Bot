@@ -8,7 +8,7 @@ const leagueJs = new LeagueJS(developerriotgameskey, {STATIC_DATA_ROOT: 'DataDra
 module.exports = {
 	data: new SlashCommandBuilder()
 	.setName('lolprofil')
-	.setDescription('...')
+	.setDescription('Affiche votre Profil league of legends')
     .addStringOption(option =>
         option
             .setName('pseudo')
@@ -53,11 +53,11 @@ module.exports = {
                                         const cinqChampionName = bestCinqChamp['name'];
                                         const cinqChampionMastery = `M${mastery[4]['championLevel']} ${mastery[4]['championPoints']}`;
                                         AccountLol.addFields(
-                                            { name: 'Top Champion', value: `**${firstChampionName}**\n└${firstChampionMastery}
-                                                                            **${secondeChampionName}**\n└${secondeChampionMastery}
-                                                                            **${threeChampionName}**\n└${threeChampionMastery}
-                                                                            **${quatreChampionName}**\n└${quatreChampionMastery}
-                                                                            **${cinqChampionName}**\n└${cinqChampionMastery}`, inline: true }
+                                            { name: 'Top Champion', value: `**${firstChampionName}**\n└${firstChampionMastery.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                                                            **${secondeChampionName}**\n└${secondeChampionMastery.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                                                            **${threeChampionName}**\n└${threeChampionMastery.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                                                            **${quatreChampionName}**\n└${quatreChampionMastery.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                                                            **${cinqChampionName}**\n└${cinqChampionMastery.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`, inline: true }
                                         )
                                             leagueJs.League.gettingEntriesForSummonerId(account['id'])
                                             .then((ranked) => {
