@@ -62,15 +62,21 @@ module.exports = {
                                         )
                                             leagueJs.League.gettingEntriesForSummonerId(account['id'])
                                             .then((ranked) => {
-                                                console.log(ranked.length);
-                                                if (ranked.length == 2) {
+                                                if (ranked[0]) {
+                                                    const winrate = Math.round(ranked[0]['wins'] / (ranked[0]['wins'] + ranked[0]['losses'])*100);
                                                     AccountLol.addFields(
-                                                        { name: `${ranked[0]['queueType'].replace('_',' ').replace('_SR','')}`, value: `${ranked[0]['tier']} ${ranked[0]['rank']} ${ranked[0]['leaguePoints']} LP \n ${ranked[0]['wins']}W ${ranked[0]['losses']}L`, inline: true },
-                                                        { name: `${ranked[1]['queueType'].replace('_',' ').replace('_','')}`, value: `${ranked[1]['tier']} ${ranked[1]['rank']} ${ranked[1]['leaguePoints']} LP \n ${ranked[1]['wins']}W ${ranked[1]['losses']}L`, inline: true }
+                                                        { name: `${ranked[0]['queueType'].replace('_',' ').replace('_SR','').replace('_5x5',' DUO')}`, value: `${ranked[0]['tier']} ${ranked[0]['rank']} ${ranked[0]['leaguePoints']} LP \n ${ranked[0]['wins']}W ${ranked[0]['losses']}L ${winrate}%`, inline: true },
                                                         )
-
                                                 }else{
-                                                    console.log('Pas de Ranked');
+                                                    console.log('Pas de Ranked Solo Duo ou Ranked Flex');
+                                                }
+                                                if (ranked[1]) {
+                                                    const winrate = Math.round(ranked[1]['wins'] / (ranked[1]['wins'] + ranked[1]['losses'])*100);
+                                                    AccountLol.addFields(
+                                                        { name: `${ranked[1]['queueType'].replace('_',' ').replace('_5x5',' DUO').replace('_SR','')}`, value: `${ranked[1]['tier']} ${ranked[1]['rank']} ${ranked[1]['leaguePoints']} LP \n ${ranked[1]['wins']}W ${ranked[1]['losses']}L ${winrate}%`, inline: true },
+                                                        )
+                                                }else{
+                                                    console.log('Pas de Ranked Solo Duo ou Ranked Flex');
                                                 }
                                                 interaction.editReply({ embeds: [AccountLol] });
                                             })
