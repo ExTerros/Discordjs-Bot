@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, EmbedBuilder, Guild } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 
 
 module.exports = {
@@ -16,7 +16,6 @@ module.exports = {
 		.setAuthor({ name: "📊 Nouveau Vote"})
 		.setColor('#30C0FF')
 		.setTitle(message)
-		.setDescription('@everyone')
 
 		const vote = await interaction.reply({ embeds: [poolEmbed], fetchReply: true });
 		vote.react('✅');
