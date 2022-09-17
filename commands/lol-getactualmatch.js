@@ -796,7 +796,7 @@ module.exports = {
                 interaction.editReply(`Il n'y a pas de game en cours pour ${account['name']}`);
             });
         }).catch((err) => {
-
+            interaction.editReply(`Aucun joueur ne porte le pseudo ${accountName}`);
         });
     }
 }
