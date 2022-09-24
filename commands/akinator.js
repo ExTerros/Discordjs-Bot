@@ -5,7 +5,7 @@ const akinator = require("discord.js-akinator");
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('akinator')
-		.setDescription("akinator")
+		.setDescription("Pense à un personnage réel ou fictif. Je vais tenter de le deviner.")
 		.addStringOption(option =>
 			option.setName('category')
 				.setDescription('The gif category')

@@ -7,6 +7,7 @@ const { tokenDev, channelNews } = require('./config.json');
 
 
 
+
 // Create a new client instance
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
