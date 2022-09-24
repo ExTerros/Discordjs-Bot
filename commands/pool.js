@@ -39,6 +39,7 @@ module.exports = {
 		.setAuthor({ name: "📊 Nouveau Vote"})
 		.setColor('#30C0FF')
 		.setTitle(message)
+		.setTimestamp()
 
 		await interaction.reply({ embeds: [poolEmbed], fetchReply: true, components: [row] });
 
