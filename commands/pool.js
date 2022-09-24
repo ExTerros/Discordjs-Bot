@@ -1,4 +1,5 @@
-const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder, } = require('discord.js');
+
 
 
 module.exports = {
@@ -11,6 +12,7 @@ module.exports = {
 				.setDescription('Votre message')
 				.setRequired(true)),
 	async execute(interaction) {
+		interaction.channel.send("@everyone");
 		const message = interaction.options.getString('message');
 		const poolEmbed = new EmbedBuilder()
 		.setAuthor({ name: "📊 Nouveau Vote"})
@@ -21,6 +23,9 @@ module.exports = {
 		vote.react('✅');
 		vote.react('🤔');
 		vote.react('❌');
+
+		
+		
 
 
 	},
