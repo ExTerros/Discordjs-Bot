@@ -13,6 +13,7 @@ module.exports = {
 				.setRequired(true)),
 	async execute(interaction) {
 		// interaction.channel.send("@everyone");
+		const alreadyPressed = []
 
 		const row = new ActionRowBuilder()
 			.addComponents(
@@ -42,13 +43,35 @@ module.exports = {
 
 		const collector = interaction.channel.createMessageComponentCollector();
 
+		//if user click do this for eache user
+
+		// collector.on('collect', async i => {
+		// 	const newEmbed = EmbedBuilder.from(poolEmbed)
+		// 		.addFields(
+		// 			{ name: `${i.customId}`, value: `**${i.user.username}**` },
+		// 		)
+		// 	await i.update({ embeds: [newEmbed], components: [row], fetchReply: true });
+		// 	const message = interaction.options.data
+		// 	console.log(message);
+		// });
+
+		
 		collector.on('collect', async i => {
-			const newEmbed = EmbedBuilder.from(poolEmbed)
+			if (!!alreadyPressed.find(id => {  
+				return id.ID === i.user.id+i.message.id
+			  })) {
+				i.reply({ content: `Tu à déjà voter ${i.user.username}!`, ephemeral: true })
+			  } else {
+				const newEmbed = EmbedBuilder.from(poolEmbed)
 				.addFields(
 					{ name: `${i.customId}`, value: `**${i.user.username}**` },
 				)
-			await i.update({ embeds: [newEmbed], components: [row] });
-		});
+				i.update({ embeds: [newEmbed], components: [row], fetchReply: true });
+				alreadyPressed.push({ID: i.user.id+i.message.id})
+			}
+		console.log(alreadyPressed);
+
+		});  
 
 		
 		
