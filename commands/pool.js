@@ -4,7 +4,7 @@ const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, Butt
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('votetest')
+		.setName('vote')
 		.setDescription("créer un vote")
 		.addStringOption(option =>
 			option
