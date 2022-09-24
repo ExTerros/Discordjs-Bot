@@ -12,7 +12,7 @@ module.exports = {
 				.setDescription('Votre message')
 				.setRequired(true)),
 	async execute(interaction) {
-		interaction.channel.send("@everyone");
+		// interaction.channel.send("@everyone");
 
 		const row = new ActionRowBuilder()
 			.addComponents(
@@ -45,7 +45,7 @@ module.exports = {
 		collector.on('collect', async i => {
 			const newEmbed = EmbedBuilder.from(poolEmbed)
 				.setDescription(`${i.customId} **${i.user.username}**`)
-			await i.update({ embeds: [newEmbed], components: [row] });
+			await interaction.editReply({ embeds: [newEmbed], components: [row], fetchReply: true });
 		});
 
 		
