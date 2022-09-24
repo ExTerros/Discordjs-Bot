@@ -12,7 +12,7 @@ module.exports = {
 				.setDescription('Votre message')
 				.setRequired(true)),
 	async execute(interaction) {
-		interaction.channel.send("@everyone");
+		// interaction.channel.send("@everyone");
 
 		const row = new ActionRowBuilder()
 			.addComponents(
