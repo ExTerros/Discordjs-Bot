@@ -44,7 +44,7 @@ module.exports = {
 
 		collector.on('collect', async i => {
 			const newEmbed = EmbedBuilder.from(poolEmbed)
-				.setDescription(`${i.customId} ${interaction.user.tag}`)
+				.setDescription(`${i.customId} **${i.user.username}**`)
 			await i.update({ embeds: [newEmbed], components: [row] });
 		});
 
