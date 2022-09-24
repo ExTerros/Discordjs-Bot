@@ -62,14 +62,9 @@ module.exports = {
 			  })) {
 				i.reply({ content: `Tu à déjà voter ${i.user.username}!`, ephemeral: true })
 			  } else {
-				const newEmbed = EmbedBuilder.from(poolEmbed)
-				.addFields(
-					{ name: `${i.customId}`, value: `**${i.user.username}**` },
-				)
-				i.update({ embeds: [newEmbed], components: [row], fetchReply: true });
+				i.reply({ content: `**${i.user.username}** à voté ${i.customId} pour ${interaction.options.data[0]['value']}`,  fetchReply: true });
 				alreadyPressed.push({ID: i.user.id+i.message.id})
 			}
-		console.log(alreadyPressed);
 
 		});  
 
