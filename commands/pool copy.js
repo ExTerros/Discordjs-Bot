@@ -44,8 +44,10 @@ module.exports = {
 
 		collector.on('collect', async i => {
 			const newEmbed = EmbedBuilder.from(poolEmbed)
-				.setDescription(`${i.customId} **${i.user.username}**`)
-			await interaction.editReply({ embeds: [newEmbed], components: [row], fetchReply: true });
+				.addFields(
+					{ name: `${i.customId}`, value: `**${i.user.username}**` },
+				)
+			await i.update({ embeds: [newEmbed], components: [row] });
 		});
 
 		
