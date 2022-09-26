@@ -36,7 +36,7 @@ module.exports = {
 
 		const message = interaction.options.getString('message');
 		const poolEmbed = new EmbedBuilder()
-		.setAuthor({ name: "📊 Nouveau Vote"})
+		.setAuthor({ name: `📊 Nouveau Vote de la part de ${interaction.user.username}`})
 		.setColor('#30C0FF')
 		.setTitle(message)
 		.setTimestamp()
